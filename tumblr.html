@@ -139,7 +139,7 @@
 							{/block:IndexPage}
 							
 							{block:PermalinkPage}
-
+								<a id="{PostID}" href="{Permalink}" onclick ="GETReblogLink('{PostID}');">reblog</a>
 							{/block:PermalinkPage}
 							
 							{block:RebloggedFrom}
@@ -231,19 +231,7 @@
 									<div class="caption">{Caption}</div>
 								{/block:Caption}
 							{/block:Photo}
-	
-							{block:Photoset}
-								{block:Photos}
-									{LinkOpenTag}
-										<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-									{LinkCloseTag}
-								{/block:Photos}
 
-								{block:Caption}
-									<div class="caption">{Caption}</div>
-								{/block:Caption}
-							{/block:Photoset}
-	
 							{block:Quote}
 								<blockquote class="words {Length}">&#8220;{Quote}&#8221;</blockquote>
 								{block:Source}
