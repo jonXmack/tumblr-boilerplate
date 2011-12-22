@@ -1,3 +1,12 @@
 .DS_Store
 Thumbs.db
 .save
+assets/jxm/css/font-face.css
+assets/jxm/css/styles.css
+assets/jxm/fonts/index.html
+assets/jxm/images/blank.png
+assets/jxm/images/index.html
+assets/jxm/js/global.js
+assets/jxm/js/jquery-1.7.0.min.js
+assets/jxm/js/selectivizr.js
+jxm.html
