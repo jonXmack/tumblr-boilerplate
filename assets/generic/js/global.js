@@ -1,3 +1,38 @@
+// iframe resizer - if you're runnning a single column blog
+// From http://blog.kamicrafted.com/post/14312661589/custom-width-for-tumblr-photosets
+
+$(function(){
+var iFrames = $('.photoset');
+function iResize() {
+	for (var i = 0, j = iFrames.length; i < j; i++) {
+		iFrames[i].style.height = iFrames[i].contentWindow.document.body.offsetHeight + 'px';}
+	}
+	
+	if ($.browser.safari || $.browser.opera) { 
+		iFrames.load(function(){
+			setTimeout(iResize, 0);	
+		});
+		
+		for (var i = 0, j = iFrames.length; i < j; i++) {
+			var iSource = iFrames[i].src;
+			iFrames[i].src = '';
+			iFrames[i].src = iSource;
+		}
+	} else {
+		iFrames.load(function() {
+			this.style.height = this.contentWindow.document.body.offsetHeight + 'px';
+		});
+	}
+});
+
+$(".photoset").each(function() { 
+	var newSrc = $(this).attr("src").replace('500','830');
+	// Replace 830 with your column width
+	$(this).attr("src", newSrc);		
+}); 
+
+// reblog tool
+
 function GETReblogLink(postId) {
 
 	if (window.XMLHttpRequest) { // code for IE7+, Firefox, Chrome, Opera, Safari
