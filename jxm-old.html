@@ -1,0 +1,535 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>{Title}{block:PostTitle} &mdash; {PostTitle}{/block:PostTitle}</title>
+
+	  <link rel="shortcut icon" href="{Favicon}"/>
+	  <link rel="alternate" type="application/rss+xml" href="{RSS}"/>
+	  <style type="text/css">
+			/* =[RES]= CSS Reset - derivative of YUI Reset CSS - http://developer.yahoo.com/yui/reset/#code ===== */
+			html,body,div,pre,form,fieldset,input,h1,h2,h3,h4,h5,h6,p,textarea,ul,ol,li,dl,dt,dd,blockquote,th,td,
+			/* HTML 5 elements */ abbr,article,aside,audio,canvas,details,figcaption,figure,footer,header,hgroup,mark,menu,meter,nav,output,progress,section,summary,time,video { margin: 0; padding: 0; }
+			table { border-collapse: collapse; border-spacing: 0; }
+			fieldset,img { border: 0; }
+			address,caption,cite,code { font-style: normal; font-weight: normal; }
+			ul { list-style: none; }
+			caption,th { text-align: left; }
+			h1,h2,h3,h4,h5,h6 { font-size: 100%; font-weight: normal; line-height: 1em; }
+			q:before,q:after { content: ''; }
+			abbr,acronym { border: 0; }
+
+			/* =[GLO]= Global Settings ===== */
+			html {
+				overflow-x: hidden;
+				font-size: 125%;
+				background: #fff;
+			}
+			body {
+				font: 50% Helvetica, Arial, sans-serif; /* base font size 1em (10px)*/
+				color: #000;
+				overflow-x: hidden;
+			}
+			/* =[COM] Common Formatting ===== */
+			p {
+				margin: 0;
+				padding: 0 0 10px;
+				font-size: 1.2em;
+				line-height: 1.33em;
+				color: #000;
+			}
+			h1 {
+				font-size: 3em;
+			}
+			h2 {
+
+			}
+			h3 {
+				font-size: 2em;
+				font-weight: 700;
+				margin: 0 0 10px;
+			}
+			h4 {
+				font-size: 1.4em;
+			}
+
+			ul,ol {
+				margin: 0;
+				padding: 0 0 15px;
+				font-size: 1.2em;
+				line-height: 1.33em;
+				color: #000;
+				list-style: disc;
+			}
+			li {
+				padding: 0;
+				margin: 0 0 2px 15px;
+			}
+			li p,
+			ul ul {
+				font-size: 1em !important;
+			}
+			li h1 {
+				font-size: 2.5em !important;
+			}
+			li h2 {
+
+			}
+			li h3 {
+				font-size: 1.3em !important;
+			}
+			li h4 {
+				font-size: 1.1em !important;
+			}
+
+			blockquote {
+				margin: 10px;
+				padding: 0;
+			}
+			img {
+				border: 0;
+			}
+			sup {
+				position: relative;
+				bottom: .3em;
+				vertical-align: baseline;
+			}
+			sub {
+				position: relative;
+				bottom: -.2em;
+				vertical-align: baseline;
+			}
+			/* =[LIN]= Links ===== */
+			a,
+			a:visited {
+				color: #000;
+				text-decoration: none;
+				font-weight: bold;
+				text-shadow: 1px 1px 1px #999;
+				-moz-text-shadow: 1px 1px 1px #999;
+				-webkit-text-shadow: 1px 1px 1px #999;
+			}
+			a:hover {
+				color: #000;
+				text-shadow: -1px -1px 1px #999;
+				-moz-text-shadow: -1px -1px 1px #999;
+				-webkit-text-shadow: -1px -1px 1px #999;
+			}
+		
+			#contain {
+				width: 960px;
+				margin: 0 auto;
+			}
+			
+			h1#strap {
+				font-size: 15.1em;
+				font-weight: 700;
+				text-align: center;
+			}
+			
+			
+			#header {
+				border-top: 1px solid #000;
+				padding: 20px 0;
+				margin: 25px 0;
+				overflow: hidden;
+			}
+			
+			#header #logo {
+				float: left;
+				width: 128px;
+				margin: 0 20px 0 0;
+			}
+		
+			#description {
+				float: left;
+				width: 812px;
+			
+			}
+			
+			#content {
+				clear: both;
+			}
+			
+			.links {
+				list-style: none;
+				margin: 0 0 10px;
+			}
+			
+			.links li {
+				float: left;
+				margin: 0 5px 0 0;
+			}
+			
+			.post {
+				clear: both;
+				overflow: hidden;
+			}
+			
+			.post-header,
+			.text,
+			.quote,
+			.link,
+			.audio,
+			.video,
+			.photo,
+			.chat,
+			.answer {
+				border-top: 1px solid #000;
+				padding: 20px 0 10px;
+			}
+
+			.post-header {
+				float: right;
+				width: 340px;
+			}
+			
+			.full-date h4 {
+				font-size: 2em;
+				font-weight: 700;
+				margin: 0 0 10px;
+			}
+			
+			.full-date .time {
+				display: block;
+			}
+						
+			.notes {
+				list-style: none;
+			}
+			
+			.notes li {
+				clear: both;
+				overflow: hidden;
+				margin: 0 0 4px;
+			}
+			
+			.notes li.tumblelog_jonxmack {
+				background: #f1f1f1;
+			}
+			
+			.notes li a {
+				float: left;
+			}
+			
+			.notes li .avatar {
+				display: block;
+				margin: 0 2px 0 0;
+			}
+
+			.notes li .action {
+				float: left;
+			}
+			
+			.notes li .action a {
+				float: none;
+			}
+
+			.notes li blockquote {
+				clear: both;
+				overflow: hidden;
+				margin: 2px 0 0 18px;
+			}
+			
+			.notes li blockquote a {
+				float: none;
+			}
+			
+			
+			
+			.text,
+			.quote,
+			.link,
+			.audio,
+			.video,
+			.photo,
+			.chat,
+			.answer {
+				float: left;
+				width: 600px;
+			}
+			
+			img {
+				max-width: 600px;
+				height: auto;
+			}
+
+			.previous-next {
+				clear: both;
+				border-top: 1px solid #000;
+				border-bottom: 1px solid #000;
+				padding: 20px 0;
+				margin: 25px 0;
+				overflow: hidden;
+				text-align: center;
+				font-size: 3em;
+			}
+			
+			#footer {
+				clear: both;
+				border-top: 1px solid #000;
+				border-bottom: 1px solid #000;
+				padding: 20px 0;
+				margin: 25px 0;
+				overflow: hidden;
+			}
+			
+			#footer .followed {
+				list-style: none;
+				overflow: hidden;
+			}
+
+			#footer .followed li {
+				width: 30px;
+				height: 30px;
+				float: left;
+				margin: 2px;
+			}
+
+	  </style>
+	</head>
+	
+	<body>
+		<div id="contain">
+
+			<h1 id="strap"><a href="/">{Title}</a></h1>
+			<div id="header">
+				<a id="logo" href="/"><img id="portrait" src="{PortraitURL-128}" alt="User Portrait"/></a>
+				<div id="description">
+					{Description}
+				</div>
+			</div>
+
+			<div id="content">
+				<!-- Loops for each post-type -->
+				{block:Posts}
+					<div class="post {TagsAsClasses}">
+						<div class="post-header">
+							<div class="full-date">
+								{block:NewDayDate}
+									<h4 class="newdate">
+									<span class="day">{ShortDayOfWeek}</span>
+									<span class="date">{ShortMonth} {DayOfMonthWithZero}, {Year}</span>
+									<span class="time">{12Hour}:{Minutes} {CapitalAmPm}</span>
+									</h4>
+								{/block:NewDayDate}
+								{block:SameDayDate}
+									<h4 class="samedate">
+									<!-- <span class="day">{ShortDayOfWeek}</span>
+									<span class="date">{ShortMonth} {DayOfMonthWithZero}, {Year}</span> -->
+									<span class="time">{12Hour}:{Minutes} {CapitalAmPm}</span>
+									</h4>
+								{/block:SameDayDate}
+							</div>
+							
+							{block:RebloggedFrom}
+								<!-- Only rendered if the post was reblogged from someone else -->
+								<p class="was-reblogged">This post was reblogged from <a href="{ReblogParentURL}" title="{ReblogParentTitle}">{ReblogParentName}</a>.</p>
+							{/block:RebloggedFrom}
+
+							{block:Text}
+								<p class="post-metadata">
+									{NoteCountWithLabel} | <a href="{Permalink}" class="permalink">Permalink &#8734;</a>
+								</p>
+								{block:PostNotes} 
+									{PostNotes}
+								{/block:PostNotes}
+						</div> <!-- end post-header -->
+
+						<div class="text">
+							{block:Title}<h3>{Title}</h3>{/block:Title}
+							{Body}
+						</div>
+							{/block:Text}
+
+							{block:Quote}
+								<p class="post-metadata">
+									{NoteCountWithLabel} | <a href="{Permalink}" class="permalink">Permalink &#8734;</a>
+								</p>
+								{block:PostNotes} 
+									{PostNotes}
+								{/block:PostNotes}
+						</div> <!-- end post-header -->
+
+						<div class="quote">
+							<blockquote class="words {Length}">&#8220;{Quote}&#8221;</blockquote>
+							{block:Source}<p class="source">&mdash; {Source}</p>{/block:Source}
+						</div>
+							{/block:Quote}
+
+							{block:Link}
+								<p class="post-metadata">
+									{NoteCountWithLabel} | <a href="{Permalink}" class="permalink">Permalink &#8734;</a>
+								</p>
+								{block:PostNotes} 
+									{PostNotes}
+								{/block:PostNotes}
+						</div> <!-- end post-header -->
+
+						<div class="link">        
+							<h3><a href="{URL}" {Target}>{Name}</a></h3>
+							{block:Description}{Description}{/block:Description}
+						</div>
+							{/block:Link}
+
+							{block:Video}
+								<p class="post-metadata">
+									{NoteCountWithLabel} | <a href="{Permalink}" class="permalink">Permalink &#8734;</a>
+								</p>
+								{block:PostNotes} 
+									{PostNotes}
+								{/block:PostNotes}
+						</div> <!-- end post-header -->
+
+						<div class="video">
+							{Video-400}
+							{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+						</div> 
+							{/block:Video}
+
+							{block:Audio}
+								<p class="post-metadata">
+									{NoteCountWithLabel} | <a href="{Permalink}" class="permalink">Permalink &#8734;</a>
+								</p>
+								{block:PostNotes} 
+									{PostNotes}
+								{/block:PostNotes}
+						</div> <!-- end post-header -->
+
+						<div class="audio">
+							{AudioPlayerBlack}
+							{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+						</div>
+							{/block:Audio}
+
+							{block:Photo}
+								<p class="post-metadata">
+									{NoteCountWithLabel} | <a href="{Permalink}" class="permalink">Permalink &#8734;</a>
+								</p>
+								{block:PostNotes} 
+									{PostNotes}
+								{/block:PostNotes}
+						</div> <!-- end post-header -->
+
+						<div class="photo">
+							{LinkOpenTag}<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>{LinkCloseTag}
+							{block:Caption}<div class="caption">{Caption}</div>{/block:Caption}
+						</div>
+							{/block:Photo}
+
+							{block:Chat}
+								<p class="post-metadata">
+									{NoteCountWithLabel} | <a href="{Permalink}" class="permalink">Permalink &#8734;</a>
+								</p>
+								{block:PostNotes} 
+									{PostNotes}
+								{/block:PostNotes}
+						</div> <!-- end post-header -->
+
+						<div class="chat">
+							{block:Title}<h3>{Title}</h3>{/block:Title}
+							<ul class="conversation">
+								{block:Lines}
+									<li class="line {Alt}">
+										{block:Label}<span class="person">{Label}</span>{/block:Label}
+										<span class="person-said">{Line}</span>
+									</li>
+							{/block:Lines}
+							</ul>
+						</div> 
+							{/block:Chat}
+
+							{block:Answer}
+								<p class="post-metadata">
+									{NoteCountWithLabel} | <a href="{Permalink}" class="permalink">Permalink &#8734;</a>
+								</p>
+								{block:PostNotes} 
+									{PostNotes}
+								{/block:PostNotes}
+						</div> <!-- end post-header -->
+
+						<div class="answer">
+							<blockquote class="words {Length}">&#8220;{Question}&#8221;</blockquote>
+							<p class="source">&mdash; {Asker}</p>
+							<p>{Answer}</p>
+						</div> 
+							{/block:Answer}
+
+					</div> <!-- end single post -->
+				{/block:Posts}
+
+				{block:PermalinkPagination}
+					<!-- Pagination only rendered on permalink pages -->
+					<p class="previous-next">
+					{block:NextPost}<a href="{NextPost}" class="next">&#8592; Next Post</a>{/block:NextPost}
+					{block:PreviousPost}<a href="{PreviousPost}" class="previous">Previous Post &#8594;</a>{/block:PreviousPost}
+					</p> <!-- end previous/next (posts) -->
+				{/block:PermalinkPagination}
+
+				{block:Pagination}
+					<!-- Pagination only rendered on index pages -->
+					<p class="previous-next">
+					{block:PreviousPage}<a href="{PreviousPage}" class="next">&#8592; Newer Entries</a>{/block:PreviousPage}
+					<span id="pages">Page {CurrentPage} of {TotalPages}</span>
+					{block:NextPage}<a href="{NextPage}" class="previous">Older Entries &#8594;</a>{/block:NextPage}
+					</p> <!-- end previous/next (pages) -->
+				{/block:Pagination}
+
+			</div> <!-- end content -->
+
+			<div id="footer">
+
+				<!-- Outputs a list of 30x30 pics of all the tumblelogs you follow -->
+				{block:Following}
+					<div id="following">
+						<ul class="followed">
+							{block:Followed}
+							<li><a href="{FollowedURL}"><img src="{FollowedPortraitURL-30}" alt="{FollowedName}" title="{FollowedTitle}"/></a></li>
+							{/block:Followed}
+						</ul>
+					</div>
+				{/block:Following}
+
+				<p class="please_dont_hide_this">Powered by <a href="http://tumblr.com/">Tumblr</a>. Based on the <a href="http://customcss.tumblr.com/">&#123;CustomCSS&#125; theme</a> by <a href="http://cubicle17.com/">Bill Israel</a> and <a href="http://numblr.nostrich.net">Richard Dunlop-Walters</a>.</p>
+			</div> <!-- end footer -->
+		</div> <!-- end containing div -->
+
+<!-- analytics -->
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-18430665-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script type="text/javascript">
+  var _gauges = _gauges || [];
+  (function() {
+    var t   = document.createElement('script');
+    t.type  = 'text/javascript';
+    t.async = true;
+    t.id    = 'gauges-tracker';
+    t.setAttribute('data-site-id', '4ef077abf5a1f53f6900000d');
+    t.src = '//secure.gaug.es/track.js';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(t, s);
+  })();
+</script>
+<script type="text/javascript">
+var sc_project=6530954; 
+var sc_invisible=1; 
+var sc_security="ab21f7a7"; 
+</script>
+
+<script type="text/javascript" src="http://www.statcounter.com/counter/counter.js"></script>
+	</body>
+</html>

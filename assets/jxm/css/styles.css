@@ -28,6 +28,7 @@ html {
     -ms-text-size-adjust: 100%;
 }
 body {
+	background: #f5f5f5 url(//jonmack.co.uk/assets/jxm/images/bg.png);
     margin: 0;
 	color: #444;
 	font: 50%/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif; /* base font size 1em (10px)*/
@@ -52,20 +53,20 @@ button, input, select, textarea {
    ========================================================================== */
 
 a {
-    color: #00e;
+    color: #4180AB;
+	text-decoration: none;
+
+    -webkit-transition: color 0.5s ease;
 }
 
-a:active,
-a:visited {
-    color: #06e;
-}
 
 a:focus {
     outline: thin dotted;
 }
 
-a:hover {
-	text-decoration: none;
+a:hover, 
+a:active {
+    color: #8C162A;
 }
 
 a:hover, a:active {
@@ -82,25 +83,30 @@ abbr[title] {
 b, strong {
     font-weight: bold;
 }
+
 blockquote {
-    margin: 1em 40px;
 }
+
 dfn {
     font-style: italic;
 }
 
+h1,h2,h3,h4,h5,h6 {
+	line-height: 1;
+}
+
 h1 {
-	font-size: 3em;
+	font-size: 4em;
 	margin: 0 0 15px;
 }
 
 h2 {
-	font-size: 2.5em;
+	font-size: 3.5em;
 	margin: 0 0 15px;
 }
 
 h3 {
-	font-size: 2em;
+	font-size: 3em;
 	margin: 0 0 15px;
 }
 
@@ -145,7 +151,8 @@ mark {
 }
 
 p {
-	font-size: 1.2em;
+	font-size: 1.3em;
+	line-height: 1.4em;
 	margin: 0 0 15px;
 }
 
@@ -188,7 +195,8 @@ sub {
 
 ul, ol {
     padding: 0 0 0 40px;
-	font-size: 1.2em;
+	font-size: 1.3em;
+	line-height: 1.4em;
 	margin: 0 0 15px;
 }
 
@@ -200,6 +208,9 @@ li ul, li ol {
 	padding: 0;
 	font-size: 1em;
 	line-height: 1;
+}
+li p {
+	font-size: 1em;
 }
 nav ul {
     list-style: none;
@@ -311,21 +322,19 @@ td {
 /* ===== Wrapper ===== */
 
 #wrapper {
-	width: 750px;
-	margin: 0 auto;
+	padding: 0 25px;
 }
 
 
 /* ===== Header ===== */
 
 header {
-
+	margin: 0 0 25px;
 }
 
 #logo {
-	width: 100px;
-	height: 100px;
-	float: left;
+	width: 100%;
+	line-height: 1;
 }
 
 
@@ -335,51 +344,287 @@ header nav ul {
 	clear: both;
 	overflow:hidden;
 	padding: 0;
+	list-style: none;
+	margin: 0 0 0 -0.5%;
 }
 
 header nav li {
 	float: left;
-	list-style: none;
-	margin: 0;
+	margin: 0 0.5% 0 0.5%;
 }
 
 header nav a {
+	display: block;
+	padding: 22px 4px 2px;
 	text-decoration: none;
+	border-top: 4px solid rgba(65,128,171,0.5);
+
+    -webkit-transition: all 0.5s ease;
 }
 
 header nav a:hover,
 header nav a.active {
-
+	border-top: 4px solid rgba(140,22,42,0.5);
 }
 
 
 /* ===== Content ===== */
 
-#content-left {
-	float: left;
-	width: 278px;
-}
-
-#content-right {
-	float: right;
-	width: 700px;
-}
-
 
 /* ===== Footer ===== */
 
 footer {
-
+	padding: 25px 0;
 }
 
+.pagination {
+	display: inline;
+	font-size: 1.4em;
+	margin: 0 auto;
+	list-style: none;
+	padding: 0;
+}
+
+.pagination li {
+	float: left;
+	margin: 0 2px;
+}
+
+.pagination li.sep {
+	border-bottom: 1px solid #CED1C0;
+	width: 20px;
+	margin: -10px 5px 0;
+	
+}
 
 /* ===== Classes ===== */
 
+.post {
+	border-bottom: 1px solid #CED1C0;
+	margin: 0 0 25px;
+	padding: 0 0 25px;
+	text-shadow: #ddd 0 1px 1px;
+}
+
+.post iframe {
+	margin: 0 125px;
+	width: 500px;
+}
+
+.post .content {
+	width: 69%;
+	float: left;
+	margin: 0 2% 0 0;
+}
+
+.post blockquote {
+	background: rgba(0,0,0,0.1);
+	font-size: 1.3em;
+	line-height: 1.4em;
+	padding: 12px;
+	margin: 0 0 15px;
+	border-radius: 5px;
+	border: none;
+}
+
+.post.reblog blockquote {
+	font-size: 1em;
+	background: none;
+	border-left: 4px solid rgba(0,0,0,0.1);
+	border-radius: 0;
+	margin: 0 0 15px 15px;
+}
+
+.post.reblog blockquote *:last-of-type {
+	margin: 0;
+}
+
+/* text */
+
+.post .text {}
+
+
+/* photo */
+
+.post .photo {}
+
+.post .photo img {
+	width: 100%;
+	margin: 0 0 15px;
+}
+
+.post .photo .exif {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 15px;
+}
+
+.post .photo .exif li {
+	float: left;
+	margin: 0 4px 0 0;
+}
+
+
+/* quote */
+
+.post .quote {}
+
+
+/* link */
+
+.post .link {}
+
+/* chat */
+
+.post .chat {}
+
+.post .chat .conversation {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.post .chat .conversation li {
+	padding: 2px 4px;
+}
+
+.post .chat .conversation .person {
+	font-weight: 700;
+}
+
+.post .chat .conversation .odd {
+	background: rgba(0,0,0,0.1);
+}
+
+
+/* audio */
+
+.post .audio {}
+
+.post .audio .audio_player {
+	margin: 0 0 15px;
+}
+
+.post .audio .artwork {
+	width: 125px;
+	float: left;
+	margin: 0 25px 15px 0;
+}
+
+.post .audio .id3 {
+	float: left;
+	padding: 0;
+	list-style: none;
+}
+
+.post .audio .caption {
+	clear: both;
+}
 
 
 
+/* video */
+
+.post .video {}
 
 
+/* answer */
+
+.post .answer ul.asker {
+	list-style: none;
+	padding: 0;
+	margin: 0 0 15px 15px;
+}
+
+.post .answer .asker img {
+	margin: -4px 0 0
+}
+
+.photo .id3,
+.video .id3 {
+	display: none;
+}
+
+.post .meta {
+	float: left;
+	width: 29%;
+}
+
+.post .meta a {
+	font-style: oblique;
+}
+
+.meta .date {
+	list-style: none;
+	padding: 0 0 0 24px;
+/* 	background: url(//jonmack.co.uk/assets/jxm/images/calendar.png) left center no-repeat; */
+}
+
+.meta .date li {
+	float: left;
+}
+
+.meta .permalink {
+	display: block;
+	float: left;
+	padding: 0 0 0 24px;
+/* 	background: url(//jonmack.co.uk/assets/jxm/images/permalink.png) left center no-repeat; */
+}
+
+.meta .permalink-reblog {
+	display: block;
+	float: left;
+	padding: 0 0 0 24px;
+/* 	background: url(//jonmack.co.uk/assets/jxm/images/reblog.png) left center no-repeat; */
+}
+
+.meta .reblogged {
+	list-style: none;
+	padding: 0 0 0 24px;
+/* 	background: url(//jonmack.co.uk/assets/jxm/images/views.png) left center no-repeat; */
+}
+
+.meta .reblogged li {
+	float: left;
+	margin: 0 4px 0 0;
+}
+
+.meta .reblogged li img {
+	margin: -2px 0 0;
+}
+
+.meta .reblogged .cf {
+	float: none;
+}
+
+.meta .notes-container {}
+
+.meta .notes-container p {
+	padding: 0 0 0 24px;
+/* 	background: url(//jonmack.co.uk/assets/jxm/images/notes.png) left center no-repeat; */
+}
+
+.meta .tags {
+	list-style: none;
+	padding: 0 0 0 24px;
+/* 	background: url(//jonmack.co.uk/assets/jxm/images/tags.png) left center no-repeat; */
+}
+
+.meta .tags li {
+	float: left;
+	margin: 0 4px 0 0;
+}
+
+.meta .source {
+	list-style: none;
+	padding: 0 0 0 24px;
+/* 	background: url(//jonmack.co.uk/assets/jxm/images/source.png) left center no-repeat; */
+}
+
+.meta .source li {
+	float: left;
+	margin: 0 4px 0 0;
+}
 
 
 
