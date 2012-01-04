@@ -27,11 +27,19 @@ html {
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
+/*
 body {
 	background: #f5f5f5 url(//jonmack.co.uk/assets/jxm/images/bg.png);
     margin: 0;
 	color: #444;
-	font: 50%/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif; /* base font size 1em (10px)*/
+	font: 50%/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
+*/
+body {
+	background: #222 url(//jonmack.co.uk/assets/jxm/images/bg-alt.png);
+    margin: 0;
+	color: #666;
+	font: 50%/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
 }
 button, input, select, textarea {
     font-family: sans-serif;
@@ -52,21 +60,36 @@ button, input, select, textarea {
    Links
    ========================================================================== */
 
+/*
 a {
     color: #4180AB;
 	text-decoration: none;
 
     -webkit-transition: color 0.5s ease;
 }
+*/
 
+a {
+    color: #F8CA00;
+	text-decoration: none;
+
+    -webkit-transition: color 0.5s ease;
+}
 
 a:focus {
     outline: thin dotted;
 }
 
+/*
 a:hover, 
 a:active {
     color: #8C162A;
+}
+*/
+
+a:hover, 
+a:active {
+    color: #E97F02;
 }
 
 a:hover, a:active {
@@ -357,14 +380,16 @@ header nav a {
 	display: block;
 	padding: 22px 4px 2px;
 	text-decoration: none;
-	border-top: 4px solid rgba(65,128,171,0.5);
+/* 	border-top: 4px solid rgba(65,128,171,0.5); */
+	border-top: 4px solid rgba(248,202,0,0.5);
 
     -webkit-transition: all 0.5s ease;
 }
 
 header nav a:hover,
 header nav a.active {
-	border-top: 4px solid rgba(140,22,42,0.5);
+/* 	border-top: 4px solid rgba(140,22,42,0.5); */
+	border-top: 4px solid rgba(233,127,2,0.5);
 }
 
 
@@ -399,11 +424,22 @@ footer {
 
 /* ===== Classes ===== */
 
+/*
 .post {
 	border-bottom: 1px solid #CED1C0;
+	box-shadow: 0 1px 0 #fff;
 	margin: 0 0 25px;
 	padding: 0 0 25px;
 	text-shadow: #ddd 0 1px 1px;
+}
+*/
+
+.post {
+	border-bottom: 1px solid #111;
+	box-shadow: 0 1px 0 #333;
+	margin: 0 0 25px;
+	padding: 0 0 25px;
+	text-shadow: #111 0 1px 1px;
 }
 
 .post iframe {
@@ -418,7 +454,8 @@ footer {
 }
 
 .post blockquote {
-	background: rgba(0,0,0,0.1);
+/* 	background: rgba(0,0,0,0.1); */
+	background: rgba(255,255,255,0.1);
 	font-size: 1.3em;
 	line-height: 1.4em;
 	padding: 12px;
@@ -430,13 +467,19 @@ footer {
 .post.reblog blockquote {
 	font-size: 1em;
 	background: none;
-	border-left: 4px solid rgba(0,0,0,0.1);
+/* 	border-left: 4px solid rgba(0,0,0,0.1); */
+	border-left: 4px solid rgba(255,255,255,0.1);
 	border-radius: 0;
 	margin: 0 0 15px 15px;
 }
 
 .post.reblog blockquote *:last-of-type {
 	margin: 0;
+}
+
+.post a:hover {
+	position: relative;
+	top: 1px;
 }
 
 /* text */
@@ -493,7 +536,9 @@ footer {
 }
 
 .post .chat .conversation .odd {
-	background: rgba(0,0,0,0.1);
+/* 	background: rgba(0,0,0,0.1); */
+	background: rgba(255,255,255,0.1);
+	color: #777;
 }
 
 
@@ -554,10 +599,44 @@ footer {
 	font-style: oblique;
 }
 
+.meta .date,
+.meta .permalink,
+.meta .permalink-reblog,
+.meta .reblogged,
+.meta .notes-container p,
+.meta .tags,
+.meta .source {
+	position: relative;
+}
+
+.meta .date:before,
+.meta .permalink:before,
+.meta .permalink-reblog:before,
+.meta .reblogged:before,
+.meta .notes-container p:before,
+.meta .tags:before,
+.meta .source:before {
+    font-family: 'Pictos';
+    font-size: 22px;
+    width: 24px;
+    position: absolute;
+    top: -11px;
+    left: 0;
+}
+
+.meta .permalink:before,
+.meta .permalink-reblog:before {
+	font-style: normal;
+	color: #666;
+}
+
 .meta .date {
 	list-style: none;
 	padding: 0 0 0 24px;
-/* 	background: url(//jonmack.co.uk/assets/jxm/images/calendar.png) left center no-repeat; */
+}
+
+.meta .date:before {
+    content: "\\";
 }
 
 .meta .date li {
@@ -571,6 +650,10 @@ footer {
 /* 	background: url(//jonmack.co.uk/assets/jxm/images/permalink.png) left center no-repeat; */
 }
 
+.meta .permalink:before {
+    content: "j";
+}
+
 .meta .permalink-reblog {
 	display: block;
 	float: left;
@@ -578,10 +661,18 @@ footer {
 /* 	background: url(//jonmack.co.uk/assets/jxm/images/reblog.png) left center no-repeat; */
 }
 
+.meta .permalink-reblog:before {
+    content: "r";
+}
+
 .meta .reblogged {
 	list-style: none;
 	padding: 0 0 0 24px;
 /* 	background: url(//jonmack.co.uk/assets/jxm/images/views.png) left center no-repeat; */
+}
+
+.meta .reblogged:before {
+    content: "1";
 }
 
 .meta .reblogged li {
@@ -604,10 +695,18 @@ footer {
 /* 	background: url(//jonmack.co.uk/assets/jxm/images/notes.png) left center no-repeat; */
 }
 
+.meta .notes-container p:before {
+    content: "k";
+}
+
 .meta .tags {
 	list-style: none;
 	padding: 0 0 0 24px;
 /* 	background: url(//jonmack.co.uk/assets/jxm/images/tags.png) left center no-repeat; */
+}
+
+.meta .tags:before {
+    content: "z";
 }
 
 .meta .tags li {
@@ -619,6 +718,10 @@ footer {
 	list-style: none;
 	padding: 0 0 0 24px;
 /* 	background: url(//jonmack.co.uk/assets/jxm/images/source.png) left center no-repeat; */
+}
+
+.meta .source:before {
+    content: "\"";
 }
 
 .meta .source li {
