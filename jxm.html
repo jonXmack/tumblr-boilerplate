@@ -23,7 +23,7 @@
 	<meta property="og:title" content=""/>
 	<meta property="og:type" content=""/>
 	<meta property="og:url" content="{site_url}"/>
-	<meta property="og:image" content="{site_url}images///jonmack.co.uk/assets/jxm/site-icon.png"/>
+	<meta property="og:image" content="//assets.jonmack.co.uk/jxm/site-icon.png"/>
 	<meta property="og:site_name" content=""/>
 	<meta property="og:description" content=""/>
 	
@@ -39,30 +39,29 @@
 -->
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="shortcut icon" href="{Favicon}">
 	
 	<!-- 129x129 png | DO NOT round corners/put a gloss finish on, device does that automatically -->
 	<link rel="apple-touch-icon" href="{PortraitURL-128}">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
-	
+
+	<!-- RSS -->	
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">		
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="//jonmack.co.uk/assets/jxm/css/styles.css">
-	<link rel="alternate" type="application/rss+xml" href="{RSS}">		
-	<link rel="stylesheet" href="//jonmack.co.uk/assets/jxm/css/font-face.css" type="text/css" title="font-face">
+	<link rel="stylesheet" href="//assets.jonmack.co.uk/jxm/css/styles.css">
+	<link rel="stylesheet" href="//assets.jonmack.co.uk/jxm/css/font-face.css" type="text/css" title="font-face">
 	
 	<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.3-min.js"></script>
 
-		<script type="text/javascript" src="//jonmack.co.uk/assets/jxm/js/selectivizr.js"></script>
+		<script type="text/javascript" src="//assets.jonmack.co.uk/jxm/js/selectivizr.js"></script>
 	<![endif]-->
 </head>
 	<body>
 		<div id="wrapper">
 		
-			<header id="header">
+			<header id="header" class="cf">
 			
 				<h1 id="logo"><a href="/" class="replace">{Title}</a></h1>
 				{block:Description}
@@ -116,7 +115,7 @@
 							{/block:Text}
 	
 							{block:Photo}
-								{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+								{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="lazy" />{LinkCloseTag}
 								
 								{block:Exif}
 									<ul class="exif cf">
@@ -215,10 +214,10 @@
 								<ul class="date cf">
 								<!-- http://www.tumblr.com/docs/en/custom_themes#dates -->
 									{block:NewDayDate}
-										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
+										<li>{12Hour}:{Minutes}:{Seconds} {AmPm} - {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix} {Month}, {Year}</li>
 									{/block:NewDayDate}
 									{block:SameDayDate}
-										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
+										<li>{12Hour}:{Minutes}:{Seconds} {AmPm} - {DayOfWeek} {DayOfMonth}{DayOfMonthSuffix} {Month}, {Year}</li>
 									{/block:SameDayDate}
 								</ul>
 							{/block:Date}
@@ -328,7 +327,7 @@
 	<!-- JavaScript -->
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-	<script>window.jQuery || document.write("<script src='//jonmack.co.uk/assets/jxm/js/jquery-1.7.0.min.js'>\x3C/script>")</script>
+	<script>window.jQuery || document.write("<script src='//assets.jonmack.co.uk/jxm/js/jquery-1.7.0.min.js'>\x3C/script>")</script>
 
 	<!-- Aditional JavaScript -->
 	<script type="text/javascript">
@@ -345,7 +344,7 @@
 
 		});
 	</script>
-	<script src="//jonmack.co.uk/assets/jxm/js/global.js"></script> 
+	<script src="//assets.jonmack.co.uk/jxm/js/global.js"></script> 
 
 	<!--
 	Google Font API WebFont Loader
@@ -355,8 +354,8 @@
 	<script type="text/javascript"> 
 		WebFont.load({
 		  custom: {
-		    families: ['LeagueGothicRegular','Pictos'], // Font name as used in the stylesheet
-		    urls: ['//jonmack.co.uk/assets/jxm/css/font-face.css']
+		    families: ['OSPDIN','Pictos'], // Font name as used in the stylesheet
+		    urls: ['//assets.jonmack.co.uk/jxm/css/font-face.css']
 		  }
 		});
 	</script> 

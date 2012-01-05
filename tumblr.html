@@ -39,17 +39,16 @@
 -->
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="shortcut icon" href="{Favicon}">
 	
 	<!-- 129x129 png | DO NOT round corners/put a gloss finish on, device does that automatically -->
 	<link rel="apple-touch-icon" href="{PortraitURL-128}">
-	<link rel="apple-touch-icon" href="apple-touch-icon.png">
 	
+	<!-- RSS -->
+	<link rel="alternate" type="application/rss+xml" href="{RSS}">		
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="//assets.jonmack.co.uk/generic/css/styles.css">
-	<link rel="alternate" type="application/rss+xml" href="{RSS}">		
 	<!-- Optional font-face stylesheet, linked to prevent duplication of styles in web inspector -->	
 	<!-- <link rel="stylesheet" href="//assets.jonmack.co.uk/generic/css/font-face.css" type="text/css" title="font-face"> -->
 	
@@ -102,127 +101,32 @@
 
 			<section id="content" class="cf">
 				
-				{block:SearchPage}
-					<p>{SearchResultCount} result(s) for <a href="{URLSafeSearchQuery}">{SearchQuery}</a></p>
-					{block:NoSearchResults}
-						<p>No results found for {SearchQuery}</p>
-					{/block:NoSearchResults}
-				{/block:SearchPage}
-
-				{block:DayPage}
-					<h2>{Month} {DayOfMonth}, {Year}</h2>
-				{/block:DayPage}
-
-				{block:TagPage}
-					<h2>Posts tagged "{Tag}"</h2>
-				{/block:TagPage}
-					
 				{block:Posts}
-					<article class="post {TagsAsClasses}{block:Odd} odd{/block:Odd}{block:Even} even{/block:Even}">
+					<article class="post cf {TagsAsClasses}">
 
-						<div class="meta">
-
-							{block:Date}
-								<div class="date">
-								<!-- http://www.tumblr.com/docs/en/custom_themes#dates -->
-									{block:NewDayDate}
-										<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>
-									{/block:NewDayDate}
-									{block:SameDayDate}
-										<p>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</p>
-									{/block:SameDayDate}
-								</div>
-							{/block:Date}
-							
-							{block:IndexPage}
-								<p><a href="{Permalink}" class="permalink">{lang:Permalink}</a></p>
-							{/block:IndexPage}
-							
-							{block:PermalinkPage}
-								<a id="{PostID}" href="{Permalink}" onclick ="GETReblogLink('{PostID}');">reblog</a>
-							{/block:PermalinkPage}
-							
-							{block:RebloggedFrom}
-								<ul class="reblogged">
-									<li>Reblogged from</li>
-									<li>
-										<img src="{ReblogParentPortraitURL-16}" alt="" />	
-										<a href="{ReblogParentURL}">{ReblogParentName}</a>	
-									</li>
-									<li>Originally posted by</li>
-									<li>
-										<img src="{ReblogRootPortraitURL-16}" alt="" />	
-										<a href="{ReblogRootURL}">{ReblogRootName}</a>	
-									</li>
-										
-								</ul>
-							{/block:RebloggedFrom}
-							
-							{block:NoteCount}
-								<div class="notes-container">
-									{NoteCountWithLabel}
-									
-									{block:PostNotes}
-						            	{PostNotes}
-									{/block:PostNotes}
-								</div>
-							{/block:NoteCount}
-							
-							{block:HasTags}
-								<ul class="tags">
-									{block:Tags}
-										<li><a href="{TagURL}">{Tag}</a></li>
-									{/block:Tags}
-								</ul>
-							{/block:HasTags}
-							
-							{block:ContentSource}
-								<ul class="source">
-									<li>Source:</li>
-									<li>
-										<a href="{SourceURL}">
-											{block:SourceLogo}
-												<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />
-											{/block:SourceLogo}
-											{block:NoSourceLogo}
-												{SourceTitle}
-											{/block:NoSourceLogo}
-										</a>
-									</li>
-								</ul>
-							{/block:ContentSource}
-
-						</div> <!-- meta -->
-
-						<div class="{PostType}">
+						<div class="content {PostType}">
 						
 							{block:Text}
-									{block:Title}<h3>{Title}</h3>{/block:Title}
-									{Body}
+								{block:Title}<h3 class="replace">{Title}</h3>{/block:Title}
+								{Body}
 							{/block:Text}
 	
 							{block:Photo}
-								{LinkOpenTag}
-									<img src="{PhotoURL-500}" alt="{PhotoAlt}"/>
-								{LinkCloseTag}
-								
-								{block:HighRes}
-									<a href="{PhotoURL-HighRes}">View in High-Res</a>
-								{/block:HighRes}
+								{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
 								
 								{block:Exif}
-									<ul>
+									<ul class="exif cf">
 										{block:Camera}
-											<li>Camera: {Camera}</li>
+											<li><strong>Camera: </strong>{Camera}</li>
 										{/block:Camera}
 										{block:Aperture}
-											<li>Aperture: {Aperture}</li>
+											<li><strong>Aperture: </strong>{Aperture}</li>
 										{/block:Aperture}
 										{block:Exposure}
-											<li>Exposure: {Exposure}</li>
+											<li><strong>Exposure: </strong>{Exposure}</li>
 										{/block:Exposure}
 										{block:FocalLength}
-											<li>Focal Length: {FocalLength}</li>
+											<li><strong>Focal Length: </strong>{FocalLength}</li>
 										{/block:FocalLength}
 									</ul>
 								{/block:Exif}
@@ -240,7 +144,7 @@
 							{/block:Quote}
 	
 							{block:Link}
-								<h3><a href="{URL}" {Target}>{Name}</a></h3>
+								<h3 class="replace"><a href="{URL}" {Target}>{Name}</a></h3>
 								{block:Description}
 									<div class="caption">
 										{Description}
@@ -249,7 +153,7 @@
 							{/block:Link}
 	
 							{block:Chat}
-								{block:Title}<h3>{Title}</h3>{/block:Title}
+								{block:Title}<h3 class="replace">{Title}</h3>{/block:Title}
 								<ul class="conversation">
 									{block:Lines}
 										<li class="line {Alt}">
@@ -262,18 +166,18 @@
 	
 							{block:Audio}
 								{AudioPlayerBlack}
-								{block:AlbumArt}<img src="{AlbumArtURL}" alt="">{/block:AlbumArt}
+								{block:AlbumArt}<img src="{AlbumArtURL}" class="artwork">{/block:AlbumArt}
 								<ul class="id3">
 									{block:Artist}
-										<li class="artist">{Artist}</li>
+										<li class="artist"><strong>Artist: </strong>{Artist}</li>
 									{/block:Artist}
 									{block:Album}
-										<li class="album">{Album}</li>
+										<li class="album"><strong>Album: </strong>{Album}</li>
 									{/block:Album}
 									{block:TrackName}
-										<li class="track">{TrackName}</li>
+										<li class="track"><strong>Track: </strong>{TrackName}</li>
 									{/block:TrackName}
-									<li class="plays">{PlayCountWithLabel}</li>
+									<li class="plays"><strong>Plays: </strong>{PlayCountWithLabel}</li>
 								</ul>
 								{block:Caption}
 									<div class="caption">{Caption}</div>
@@ -291,44 +195,128 @@
 							{/block:Video}
 	
 							{block:Answer}
-								{Question}
+								<blockquote>
+									{Question}
+								</blockquote>
 								<ul class="asker">
-									<li><img src="{AskerPortraitURL-16}"></li>
-									<li>{Asker}</li>
+									<li><img src="{AskerPortraitURL-16}"> {Asker}</li>
 								</ul>
 								{Answer}
 							{/block:Answer}
-						</div> <!-- {PostType} -->
+						</div> <!-- content {PostType} -->
+
+						<div class="meta">
+
+							{block:Date}
+								<ul class="date cf">
+								<!-- http://www.tumblr.com/docs/en/custom_themes#dates -->
+									{block:NewDayDate}
+										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
+									{/block:NewDayDate}
+									{block:SameDayDate}
+										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
+									{/block:SameDayDate}
+								</ul>
+							{/block:Date}
+							
+							{block:IndexPage}
+								<p class="cf"><a href="{Permalink}" class="permalink">Permalink</a></p>
+							{/block:IndexPage}
+							
+							{block:PermalinkPage}
+								<p class="cf">
+									<a id="{PostID}" href="{Permalink}" onclick ="GETReblogLink('{PostID}');" class="permalink-reblog">Reblog</a>
+								</p>
+							{/block:PermalinkPage}
+							
+							{block:RebloggedFrom}
+								<ul class="reblogged cf">
+									<li class="from">Reblogged from</li>
+									<li>
+										<img src="{ReblogParentPortraitURL-16}" alt="" />	
+										<a href="{ReblogParentURL}">{ReblogParentName}</a>	
+									</li>
+								</ul>
+							{/block:RebloggedFrom}
+							
+							{block:NoteCount}
+								<div class="notes-container cf">
+									<p>{NoteCountWithLabel}</p>
+									
+									{block:PostNotes}
+						            	{PostNotes}
+									{/block:PostNotes}
+								</div>
+							{/block:NoteCount}
+							
+							{block:HasTags}
+								<ul class="tags cf">
+									<li>Tagged:</li>
+									{block:Tags}
+										<li><a href="{TagURL}">{Tag}</a></li>
+									{/block:Tags}
+								</ul>
+							{/block:HasTags}
+							
+							{block:ContentSource}
+								<ul class="source cf">
+									<li>Source:</li>
+									<li>
+										<a href="{SourceURL}">
+											{block:SourceLogo}
+												<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />
+											{/block:SourceLogo}
+											{block:NoSourceLogo}
+												{SourceTitle}
+											{/block:NoSourceLogo}
+										</a>
+									</li>
+								</ul>
+							{/block:ContentSource}
+
+						</div> <!-- meta -->
+
 						
 					</article>
 				{/block:Posts}
 
-				{block:PermalinkPagination}
-					{block:PreviousPost}<a href="{PreviousPost}">{lang:Previous post}</a>{/block:PreviousPost}
-					{block:NextPost}<a href="{NextPost}">{lang:Next post}</a>{/block:NextPost}
-				{/block:PermalinkPagination}
-				
-				{block:Pagination}
-				<div class="pagination">
-					{block:PreviousPage}
-						<a id="previous" href="{PreviousPage}">{lang:Previous}</a>
-					{/block:PreviousPage}
-
-					{block:JumpPagination length="5"}
-						{block:CurrentPage}<span class="current-page">{PageNumber}</span>{/block:CurrentPage}
-						{block:JumpPage}<a class="jump-page" href="{URL}">{PageNumber}</a>{/block:JumpPage}
-					{/block:JumpPagination}
-
-					{block:NextPage}
-						<a id="next" href="{NextPage}">{lang:Next}</a>
-					{/block:NextPage}
-				</div>
-				{/block:Pagination}
 			</section><!--close content-->
 			
 		</div><!--close wrapper-->
 		
-		<footer>
+		<footer class="cf">
+			{block:PermalinkPagination}
+				<ul class="pagination cf">
+					{block:PreviousPost}
+						<li><a href="{PreviousPost}">Previous post</a></li>
+					{/block:PreviousPost}
+						<li class="sep">&nbsp;</li>
+					{block:NextPost}
+						<li><a href="{NextPost}">Next post</a></li>
+					{/block:NextPost}
+				</ul>
+			{/block:PermalinkPagination}
+
+			{block:Pagination}
+			<ul class="pagination cf">
+				{block:PreviousPage}
+					<li><a id="previous" href="{PreviousPage}">Newer</a></li>
+				{/block:PreviousPage}
+
+				{block:JumpPagination length="5"}
+					{block:CurrentPage}
+						<li class="current-page">{PageNumber}</li>
+					{/block:CurrentPage}
+					{block:JumpPage}
+						<li><a class="jump-page" href="{URL}">{PageNumber}</a></li>
+					{/block:JumpPage}
+				{/block:JumpPagination}
+
+				{block:NextPage}
+					<li><a id="next" href="{NextPage}">Older</a></li>
+				{/block:NextPage}
+			</ul>
+			{/block:Pagination}
 		
 		</footer>
 
