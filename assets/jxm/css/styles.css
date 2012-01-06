@@ -358,10 +358,6 @@ td {
 
 header {
 	margin: 0 0 25px;
-	-webkit-transition: height 0.5s ease;
-	   -moz-transition: height 0.5s ease;
-	     -o-transition: height 0.5s ease;
-	        transition: height 0.5s ease;
 }
 
 header.pinned  {
@@ -448,7 +444,7 @@ header nav a.active {
     font-size: 63px;
     height: 65px;
     position: absolute;
-    top: -9px;
+    top: 0;
     left: 50%;
 	text-indent: 0;
     margin: 0 0 0 -28px;
@@ -464,30 +460,37 @@ header nav a.active {
 
 .pinned nav li:nth-child(1) a:before {
     content: "w";
+    top: -3px;
 }
 
 .pinned nav li:nth-child(2) a:before {
     content: "\\";
+    top: -5px;
 }
 
 .pinned nav li:nth-child(3) a:before {
     content: "U";
+    top: -1px;
 }
 
 .pinned nav li:nth-child(4) a:before {
     content: "m";
+    top: -5px;
 }
 
 .pinned nav li:nth-child(5) a:before {
     content: "v";
+    top: -1px;
 }
 
 .pinned nav li:nth-child(6) a:before {
     content: "*";
+    top: -3px;
 }
 
 .pinned nav li:nth-child(7) a:before {
     content: "0";
+    top: -3px;
 }
 
 
