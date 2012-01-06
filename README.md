@@ -1,4 +1,4 @@
-Tumblr Boilerplate 0.1.1.1 beta
+Tumblr Boilerplate 0.1.2 beta
 ===========================
 
 Forked from [Dave Santos](https://github.com/davesantos)
