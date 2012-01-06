@@ -364,12 +364,16 @@ header {
 	        transition: height 0.5s ease;
 }
 
-.pinned header {
+header.pinned  {
 	position: fixed;
+	bottom: -111px;
 	width: 95.7%;
 	height: 109px;
 	background: #222 url(//assets.jonmack.co.uk/jxm/images/bg-alt.png) top left fixed;
 	z-index: 1000;
+	margin: 0;
+	border-top: 1px solid #333;
+	box-shadow: 0 -1px 0 #111;
 }
 
 #logo {
@@ -402,7 +406,6 @@ header nav ul {
 	margin: 0 0 0 -0.5%;
 }
 
-
 header nav li {
 	float: left;
 	margin: 0 0.5% 0 0.5%;
@@ -427,18 +430,77 @@ header nav a.active {
 	border-top: 4px solid rgba( 233, 127,   2, 0.5);
 }
 
+.pinned nav li a {
+	display: block;
+	position: relative;
+	text-indent: -9999px;
+	border: 0;
+	padding: 22px 4px 23px;
+}
+
+.pinned nav li a:hover,
+.pinned nav li a:active {
+	border: 0;
+}
+
+.pinned nav li a:before {
+    font-family: 'Pictos';
+    font-size: 63px;
+    height: 65px;
+    position: absolute;
+    top: -9px;
+    left: 50%;
+	text-indent: 0;
+    margin: 0 0 0 -28px;
+	
+	-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba( 255, 255, 255,   1)), color-stop(100%, rgba( 255, 255, 255, 0.4)), to(rgba( 255, 255, 255,   1)));
+	text-shadow: rgba(   0,   0,   0, 0.5) -1px 0, rgba(   0,   0,   0, 0.3) 0 -1px, rgba( 255, 255, 255, 0.5) 0 1px, rgba(   0,   0,   0, 0.3) -1px -2px;
+
+	-webkit-transition: color 0.5s ease;
+	   -moz-transition: color 0.5s ease;
+	     -o-transition: color 0.5s ease;
+	        transition: color 0.5s ease;
+}
+
+.pinned nav li:nth-child(1) a:before {
+    content: "w";
+}
+
+.pinned nav li:nth-child(2) a:before {
+    content: "\\";
+}
+
+.pinned nav li:nth-child(3) a:before {
+    content: "U";
+}
+
+.pinned nav li:nth-child(4) a:before {
+    content: "m";
+}
+
+.pinned nav li:nth-child(5) a:before {
+    content: "v";
+}
+
+.pinned nav li:nth-child(6) a:before {
+    content: "*";
+}
+
+.pinned nav li:nth-child(7) a:before {
+    content: "0";
+}
+
+
 
 /* ===== Content ===== */
 
-.pinned #content {
-	padding: 617px 0 0;
-}
+#content {}
 
 
 /* ===== Footer ===== */
 
 footer {
-	padding: 25px 0;
+	padding: 25px 0 134px;
 }
 
 .pagination {
@@ -481,8 +543,8 @@ footer {
 }
 
 .post iframe {
-	margin: 0 125px;
 	width: 500px;
+	margin: 0 0 15px;
 }
 
 .post .content {
@@ -659,6 +721,7 @@ footer {
 .meta .notes-container p:before,
 .meta .tags:before,
 .meta .source:before {
+	display: block;
     font-family: 'Pictos';
     font-size: 22px;
     width: 24px;
@@ -815,6 +878,93 @@ footer {
 ================================================================	*/
 
 @media only screen and (max-width: 767px) {
+	
+	header {
+		margin: 25px 0;
+	}
+	
+	header.pinned  {
+		display: none;
+	}
+
+	nav li a {
+		display: block;
+		position: relative;
+		text-indent: -9999px;
+		border: 0;
+		height: 35px;
+	}
+	
+	nav li a:hover,
+	nav li a:active {
+		border: 0;
+	}
+	
+	nav li a:before {
+	    font-family: 'Pictos';
+	    font-size: 25px;
+	    height: 35px;
+	    position: absolute;
+	    top: -9px;
+	    left: 50%;
+		text-indent: 0;
+	    margin: 0 0 0 -10px;
+		
+		-webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba( 255, 255, 255,   1)), color-stop(100%, rgba( 255, 255, 255, 0.4)), to(rgba( 255, 255, 255,   1)));
+		text-shadow: rgba(   0,   0,   0, 0.5) -1px 0, rgba(   0,   0,   0, 0.3) 0 -1px, rgba( 255, 255, 255, 0.5) 0 1px, rgba(   0,   0,   0, 0.3) -1px -2px;
+	
+		-webkit-transition: color 0.5s ease;
+		   -moz-transition: color 0.5s ease;
+		     -o-transition: color 0.5s ease;
+		        transition: color 0.5s ease;
+	}
+	
+	nav li:nth-child(1) a:before {
+	    content: "w";
+	}
+	
+	nav li:nth-child(2) a:before {
+	    content: "\\";
+	}
+	
+	nav li:nth-child(3) a:before {
+	    content: "U";
+	}
+	
+	nav li:nth-child(4) a:before {
+	    content: "m";
+	}
+	
+	nav li:nth-child(5) a:before {
+	    content: "v";
+	}
+	
+	nav li:nth-child(6) a:before {
+	    content: "*";
+	}
+	
+	nav li:nth-child(7) a:before {
+	    content: "0";
+	}
+	
+	.post {
+		padding: 25px 0 0;
+	}
+	
+	.post .content,
+	.post .meta {
+		width: 100%;
+	}
+
+	.post iframe {
+		width: 270px;
+	}
+
+	.post .meta {
+		margin: 15px 0 0;
+		padding: 15px 0 0;
+		box-shadow: 0 -1px 0 #111;
+	}
 
 }
 
@@ -823,7 +973,11 @@ footer {
 ================================================================	*/
 
 @media only screen and (min-width: 480px) and (max-width: 767px) {
-	
+
+	.post iframe {
+		width: 430px;
+	}
+
 }
 
 

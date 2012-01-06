@@ -1,20 +1,17 @@
-// iframe resizer - if you're runnning a single column blog
-// From http://blog.kamicrafted.com/post/14312661589/custom-width-for-tumblr-photosets
+// iFrame resizer
 
-/*
 $(function(){
 	var iFrames = $('.photoset');
+	
 	function iResize() {
 		for (var i = 0, j = iFrames.length; i < j; i++) {
 			iFrames[i].style.height = iFrames[i].contentWindow.document.body.offsetHeight + 'px';
 		}
 	}
-	
 	if ($.browser.safari || $.browser.opera) { 
 		iFrames.load(function(){
 			setTimeout(iResize, 0);	
 		});
-	
 		for (var i = 0, j = iFrames.length; i < j; i++) {
 			var iSource = iFrames[i].src;
 			iFrames[i].src = '';
@@ -27,12 +24,25 @@ $(function(){
 	}
 });
 
-$(".photoset").each(function() { 
-	var newSrc = $(this).attr("src").replace('500','750');
-	// Replace 830 with your column width
-	$(this).attr("src", newSrc);		
-}); 
-*/
+setTimeout(function(){
+	if ((screen.width == 320) && (screen.height == 480)) {
+	  	if ((window.orientation == 0) || (window.orientation == 180)) {
+			$(".photoset").each(function() { 
+				var newSrc = $(this).attr("src").replace('500','270');
+				// Replace 830 with your column width
+				$(this).attr("src", newSrc);		
+			}); 
+		}
+	  	else if ((window.orientation == 90) || (window.orientation == -90)) {
+			$(".photoset").each(function() { 
+				var newSrc = $(this).attr("src").replace('500','430');
+				// Replace 830 with your column width
+				$(this).attr("src", newSrc);		
+			}); 
+		}
+
+	}
+}, 100);
 
 // reblog tool
 
@@ -151,54 +161,60 @@ function scroll(direction) {
     return false;
 }
 
-$(function() {
-	var bar = $('#header');
-
-	$(window).scroll(function() {
-		if($(this).scrollTop() > 435) {
-			bar.stop().parent('#wrapper').addClass('pinned');
-			$("#logo").fitText(0.372);
-		} else {
-			bar.stop().parent('#wrapper').removeClass('pinned');
-			$("#logo").fitText(0.372);
-		}
-
-	});
-
-});
-
-
-
 $(document).ready(function() {
 
+
 	// Removes the font-face stylesheet once the google appended one is in to prevent duplication of styles in inspector
-	$('link[title=font-face]').remove();
+		$('link[title=font-face]').remove();
 
-	$("#logo").fitText(0.372);
+	// FitText
+		$("#logo").fitText(0.372);
 	
-	var navElements		= $('nav li').length;
-	var containerWidth	= parseInt(100) - parseInt(navElements);
-	var finalWidth		= parseInt(containerWidth) / parseInt(navElements);
+	// Pinned nav
+		var bar = $('#header');
+
+		bar.addClass('main');
+		bar.clone().appendTo('#wrapper').removeClass('main').addClass('pinned');
+
+		var pin = $('#header.pinned');
+
+		pin.find('#logo').addClass('mini-logo');
+
+	    var pos = pin.css('bottom');
+
+		$(window).scroll(function() {
+			if($(this).scrollTop() > 450) {
+				pin.stop().animate({'bottom' : '0px'}, 500);
+				$(".mini-logo").fitText(0.372);
+			} else {
+				pin.stop().animate({'bottom' : pos}, 500);
+				$(".mini-logo").fitText(0.372);
+			}
+		});
 	
-	$('nav li').css('width',finalWidth + '%');
+		// Pinned nav li width
+			var pNavElements	= $('.pinned nav li').length;
+			var pContainerWidth	= parseInt(100) - parseInt(pNavElements);
+			var pFinalWidth		= parseInt(pContainerWidth) / parseInt(pNavElements);
 
-//	$("img.lazy").lazyload({
-//		threshold : 200,
-//		effect : "fadeIn"
-//	});
+			$('.pinned nav li').css('width',pFinalWidth + '%');
+	
+		// Pinned nav text to title
+			pin.find('nav li a').each(function() {
+				var elemTxt = $(this).text();
+				$(this).attr('title', elemTxt);		
+			});
+	//END Pinned Nav
+	
+	// Main nav li width
+		var navElements		= $('.main nav li').length;
+		var containerWidth	= parseInt(100) - parseInt(navElements);
+		var finalWidth		= parseInt(containerWidth) / parseInt(navElements);
 
-	$(window).keydown (function(event) {
-	    if (event.altKey) {
-	        switch (event.which) {
-	            case 38: // Alt-up = next
-	                scroll ('next');
-	                break;
-	            case 40:  // Alt-down = prev
-	                scroll ('prev');
-	                break;
-	        }
-	    }
-	    else {
+		$('.main nav li').css('width',finalWidth + '%');
+
+	// Arrow next/prev
+		$(window).keydown (function(event) {
 	        switch (event.keyCode) {
 	            case 37: // key is left
 	                scroll ('prev');
@@ -207,8 +223,7 @@ $(document).ready(function() {
 	                scroll ('next');
 	                break;
 	        }
-	    }
-	});
+		});
 
 
 });
