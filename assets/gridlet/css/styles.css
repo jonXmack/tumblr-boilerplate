@@ -433,9 +433,9 @@ footer {
 }
 
 .masonry .masonry-brick {
-	-webkit-transition: width, left, right, top, -webkit-box-shadow 0.1s ease-in;
-	   -moz-transition: width, left, right, top, -moz-box-shadow 0.1s ease-in;
-			transition: width, left, right, top, box-shadow 0.1s ease-in;
+	-webkit-transition: width, top, -webkit-box-shadow 0.1s ease-in;
+	   -moz-transition: width, top, -moz-box-shadow 0.1s ease-in;
+			transition: width, top, box-shadow 0.1s ease-in;
 }
 
 
@@ -521,15 +521,33 @@ footer {
 	position: relative;
 	width: 250px;
 	height: 250px;
+	background: #eee;
+}
+
+.post.audio .artwork:before {
+	content: "m";
+	font-family: "Pictos";
+	position: absolute;
+	top: -157px;
+	left: 2px;
+	z-index: 5;
+	font-size: 25em;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	color: #ddd;
+	text-shadow: #fff 0 1px;
 }
 
 .post.audio .artwork img {
 	position: absolute;
+	z-index: 10;
 	width: 100%;
 }
 
 .post.audio .artwork .player {
 	position: absolute;
+	z-index: 15;
 	margin: -28px -28px 0 0;
 	height: 27px;
 	width: 27px;

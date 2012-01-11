@@ -95,42 +95,49 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	var wrapCount = $('.wrap img').length;
-	
-	$('.wrap').css('width', wrapCount * 260);	
-	
-	var step = 520;
-	var scrolling = false;
-	
-	// Wire up events for the 'scrollUp' link:
-	$(".prev").bind("click", function(event) {
-	    event.preventDefault();
-	    // Animates the scrollTop property by the specified
-	    // step.
-	    $(".photo-wrap").animate({
-	        scrollLeft: "-=" + step + "px"
-	    });
+	$('.photoset-wrapper').each(function(i){
+
+		var wrapCount = $(this).find('.wrap img').length;
+		
+		console.log(i + ':' + wrapCount);
+		
+		$(this).find('.wrap').css('width', wrapCount * 260);	
+		
+		var step = 520;
+		var scrolling = false;
+		
+		// Wire up events for the 'scrollUp' link:
+		$(this).find(".prev").bind("click", function(event) {
+		    event.preventDefault();
+		    // Animates the scrollTop property by the specified
+		    // step.
+		    $(this).siblings(".photo-wrap").animate({
+		        scrollLeft: "-=" + step + "px"
+		    });
+		});
+		
+		
+		$(this).find(".next").bind("click", function(event) {
+		    event.preventDefault();
+		    $(this).siblings(".photo-wrap").animate({
+		        scrollLeft: "+=" + step + "px"
+		    });
+		});
+		
+		function scrollContent(direction) {
+		    var amount = (direction === "left" ? "-=1px" : "+=1px");
+		    $(this).siblings(".photo-wrap").animate({
+		        scrollLeft: amount
+		    }, 1, function() {
+		        if (scrolling) {
+		            // If we want to keep scrolling, call the scrollContent function again:
+		            scrollContent(direction);
+		        }
+		    });
+		}
+
 	});
-	
-	
-	$(".next").bind("click", function(event) {
-	    event.preventDefault();
-	    $(".photo-wrap").animate({
-	        scrollLeft: "+=" + step + "px"
-	    });
-	});
-	
-	function scrollContent(direction) {
-	    var amount = (direction === "left" ? "-=1px" : "+=1px");
-	    $(".photo-wrap").animate({
-	        scrollLeft: amount
-	    }, 1, function() {
-	        if (scrolling) {
-	            // If we want to keep scrolling, call the scrollContent function again:
-	            scrollContent(direction);
-	        }
-	    });
-	}
+
 	
 	
 
