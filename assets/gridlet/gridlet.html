@@ -111,7 +111,7 @@
 							{/block:Text}
 	
 							{block:Photo}
-								{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+								{block:HighRes}<a class="fancy fancybox.image" href="{PhotoURL-HighRes}" data-fancybox-group="gallery{PostID}" rel="gallery{PostID}" title="{PhotoAlt}">{/block:HighRes}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{block:HighRes}</a>{/block:HighRes}
 								
 								{block:Exif}
 									<ul class="exif cf">
@@ -143,7 +143,7 @@
 									<div class="photo-wrap">
 										<div class="wrap cf">
 											{block:Photos}
-												{block:HighRes}<a href="{PhotoURL-HighRes}" target="_blank">{/block:HighRes}<img src="{PhotoURL-250}" alt="{PhotoAlt}"/>{block:HighRes}</a>{/block:HighRes}
+												{block:HighRes}<a class="fancy fancybox.image" href="{PhotoURL-HighRes}" data-fancybox-group="gallery{PostID}" rel="gallery{PostID}" title="{PhotoAlt}">{/block:HighRes}<img src="{PhotoURL-250}" alt="{PhotoAlt}"/>{block:HighRes}</a>{/block:HighRes}
 											{/block:Photos}
 										</div>
 									</div>
@@ -353,6 +353,10 @@
 	<script>window.jQuery || document.write("<script src='//assets.jonmack.co.uk/gridlet/js/jquery-1.7.0.min.js'>\x3C/script>")</script>
 
 	<!-- Aditional JavaScript -->
+	<!-- FancyBox -->
+	<link rel="stylesheet" href="//assets.jonmack.co.uk/_fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="//assets.jonmack.co.uk/_fancybox/jquery.fancybox.pack.js"></script>
+
 	<script src="//assets.jonmack.co.uk/gridlet/js/global.js"></script> 
 
 	<!--

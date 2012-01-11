@@ -378,7 +378,7 @@ footer {
 .post {
 	width: 250px;
 	padding: 10px;
-	margin: 0 0 15px;
+	margin: 0 0 20px;
 	float: left;
 	overflow: hidden;
 	-webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
@@ -444,7 +444,7 @@ footer {
 .post.text {}
 
 
-/* photo */
+/* photo + photoset */
 
 .post.photo {
 	width: 540px;
@@ -452,6 +452,32 @@ footer {
 
 .post.photo .photo img {
 	max-width: 100%;
+}
+
+.fancy {
+	max-width: 100%;
+	position: relative;
+	display: block;
+	float: left;
+	margin: 0 10px 0 0;
+	text-decoration: none;
+	-webkit-transition: colour 0.5s ease-in;
+	   -moz-transition: colour 0.5s ease-in;
+			transition: colour 0.5s ease-in;
+}
+
+.fancy:before {
+	content: "`";
+	font-family: "Pictos";
+	position: absolute;
+	top: -16px;
+	right: 3px;
+	font-size: 3em;
+	color: rgba(255,255,255,0.5);
+}
+
+.fancy:hover:before {
+	color: rgba(255,255,255,0.75);
 }
 
 .photoset-wrapper {
@@ -494,26 +520,8 @@ footer {
 	overflow: hidden;
 }
 
-.photo-wrap a {
-	position: relative;
-	display: block;
-	float: left;
-	margin: 0 10px 0 0;
-	text-decoration: none;
-}
-
-.photo-wrap a:before {
-	content: "`";
-	font-family: "Pictos";
-	position: absolute;
-	top: -16px;
-	right: 3px;
-	font-size: 3em;
-	color: rgba(255,255,255,0.5);
-}
-
-.photo-wrap a:hover:before {
-	color: rgba(255,255,255,0.75);
+.expanded .photo-wrap {
+	width: 97.4%;
 }
 
 .photo-wrap img {
@@ -578,6 +586,7 @@ footer {
 	padding: 15px;
 	border-radius: 55px;
 	background: #e4e4e4;
+	box-shadow: rgba(0,0,0,0.25) 0 0 5px;
 }
 
 .post.audio .artwork .player .audio_player {

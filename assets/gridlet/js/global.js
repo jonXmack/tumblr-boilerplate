@@ -69,6 +69,9 @@ $(document).ready(function() {
 	// Removes the font-face stylesheet once the google appended one is in to prevent duplication of styles in inspector
 	$('link[title=font-face]').remove();
 
+	// FancyBox
+	$(".fancy").fancybox();
+
 	// Masonry
 	var $container = $('#content');
 
@@ -81,20 +84,31 @@ $(document).ready(function() {
 	});
 	
 	$('.expand').click(function(){
-		// checks for any posts that are already expanded and removes the class
-		$('.post').removeClass('expanded');		
-		// adds class to parent post element
-		$(this).parents('.post').addClass('expanded');
+		
+		if($(this).parents('.post').hasClass('expanded')) {
+
+			$(this).parents('.post').removeClass('expanded');
+
+		} else {
+
+			// checks for any posts that are already expanded and removes the class
+			$('.post').removeClass('expanded');		
+			// adds class to parent post element
+			$(this).parents('.post').addClass('expanded');
+
+		}
+
 		// recalculates shit
 		$container.masonry({
 			itemSelector: '.post',
 			columnWidth: 290,
 			isAnimated: true
 		});
+
 		// disables click
 		return false;
 	});
-	
+
 	$('.photoset-wrapper').each(function(i){
 
 		var wrapCount = $(this).find('.wrap img').length;
