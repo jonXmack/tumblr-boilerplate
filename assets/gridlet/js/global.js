@@ -94,5 +94,44 @@ $(document).ready(function() {
 		// disables click
 		return false;
 	});
+	
+	var wrapCount = $('.wrap img').length;
+	
+	$('.wrap').css('width', wrapCount * 260);	
+	
+	var step = 520;
+	var scrolling = false;
+	
+	// Wire up events for the 'scrollUp' link:
+	$(".prev").bind("click", function(event) {
+	    event.preventDefault();
+	    // Animates the scrollTop property by the specified
+	    // step.
+	    $(".photo-wrap").animate({
+	        scrollLeft: "-=" + step + "px"
+	    });
+	});
+	
+	
+	$(".next").bind("click", function(event) {
+	    event.preventDefault();
+	    $(".photo-wrap").animate({
+	        scrollLeft: "+=" + step + "px"
+	    });
+	});
+	
+	function scrollContent(direction) {
+	    var amount = (direction === "left" ? "-=1px" : "+=1px");
+	    $(".photo-wrap").animate({
+	        scrollLeft: amount
+	    }, 1, function() {
+	        if (scrolling) {
+	            // If we want to keep scrolling, call the scrollContent function again:
+	            scrollContent(direction);
+	        }
+	    });
+	}
+	
+	
 
 });

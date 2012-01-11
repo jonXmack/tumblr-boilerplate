@@ -49,8 +49,7 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="//assets.jonmack.co.uk/gridlet/css/styles.css">
-	<!-- Optional font-face stylesheet, linked to prevent duplication of styles in web inspector -->	
-	<!-- <link rel="stylesheet" href="//assets.jonmack.co.uk/gridlet/css/font-face.css" type="text/css" title="font-face"> -->
+	<link rel="stylesheet" href="//assets.jonmack.co.uk/gridlet/css/font-face.css" type="text/css" title="font-face">
 	
 	<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -136,6 +135,23 @@
 								{/block:Caption}
 							{/block:Photo}
 							
+							{block:Photoset}
+								<div class="photoset-wrapper">
+									<a href="#" class="prev">&laquo;</a>
+									<a href="#" class="next">&raquo;</a>
+									
+									<div class="photo-wrap">
+										<div class="wrap cf wrap-{PhotoCount}">
+											{block:Photos}
+												<img src="{PhotoURL-250}" alt="" />
+											{/block:Photos}
+										</div>
+									</div>
+								</div>
+								
+								{Caption}
+							{/block:Photoset}
+							
 							{block:Quote}
 								<blockquote class="words {Length}">&#8220;{Quote}&#8221;</blockquote>
 								{block:Source}
@@ -215,10 +231,14 @@
 								<ul class="date cf">
 								<!-- http://www.tumblr.com/docs/en/custom_themes#dates -->
 									{block:NewDayDate}
-										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
+										<li class="month">{ShortMonth}</li>
+										<li class="day">{DayOfMonth}</li>
+										<li class="time">{24Hour}:{Minutes} {CapitalAmPm}</li>
 									{/block:NewDayDate}
 									{block:SameDayDate}
-										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
+										<li class="month">{ShortMonth}</li>
+										<li class="day">{DayOfMonth}</li>
+										<li class="time">{24Hour}:{Minutes} {CapitalAmPm}</li>
 									{/block:SameDayDate}
 								</ul>
 							{/block:Date}
@@ -339,18 +359,16 @@
 	Google Font API WebFont Loader
 	Makes browsers hide the @font-face text until the font file has been loaded, prevents flicker in Firefox 
 	--> 
-<!-- 
-	Uncomment if using custom fonts
 	<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script> 
 	<script type="text/javascript"> 
 		WebFont.load({
 		  custom: {
-		    families: ['FONT-NAME'], // Font name as used in the stylesheet
+		    families: ['Pictos'], // Font name as used in the stylesheet
 		    urls: ['//assets.jonmack.co.uk/gridlet/css/font-face.css']
 		  }
 		});
 	</script> 
--->
+
 	<!-- Analytics -->
 	<script>
 		var _gaq=[['_setAccount','UA-717581-X'],['_trackPageview'],['_trackPageLoadTime']];

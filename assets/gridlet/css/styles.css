@@ -451,9 +451,52 @@ footer {
 }
 
 .post.photo .photo img {
-	width: 100%;
+	max-width: 100%;
 }
 
+.photoset-wrapper {
+	position: relative;
+}
+
+.photoset-wrapper .prev,
+.photoset-wrapper .next {
+	position: absolute;
+	top: 50%;
+	margin: -20px 0 0;
+	font-size: 4em;
+	line-height: 0.85em;
+	text-decoration: none;
+	height: 40px;
+	width: 40px;
+	border-radius: 20px;
+	text-align: center;
+	background: rgba(228,228,228,1);
+	color: #434343;
+}
+
+.photoset-wrapper .prev:hover,
+.photoset-wrapper .next:hover {
+}
+
+.photoset-wrapper .prev {
+	left: -5px;
+}
+
+.photoset-wrapper .next {
+	right: -5px;
+}
+
+
+.photo-wrap {
+	width: 520px;
+	margin: 0 0 0 15px;
+	overflow: hidden;
+}
+
+.photo-wrap img {
+	float: left;
+	margin: 0 10px 0 0;
+}
 
 /* quote */
 
@@ -521,6 +564,50 @@ footer {
 
 .post .meta {}
 
+.meta .date {
+	list-style: none;
+	padding: 0;
+	font-size: 1em;
+	line-height: 1;
+	font-family: Georgia, Times, serif;
+	position: relative;
+	margin: 10px 0 0;
+}
+
+.meta .date:before,
+.meta .date:after {
+	content: "";
+	border-top: 1px solid #000;
+	height: 1px;
+	width: 15%;
+	position: absolute;
+	top: 50%;
+	box-shadow: rgba(0,0,0,0.5) 0 0 15px;
+}
+
+.meta .date:before {
+	left: 50%;
+	margin: 0 0 0 -30%;
+}
+
+.meta .date:after {
+	right: 50%;
+	margin: 0 -30% 0 0;
+}
+
+.meta .date li {
+	text-align: center;
+}
+
+.meta .date .month {
+	text-transform: uppercase;
+	font-size: 1.2em;
+	margin: 0 0 -4px;
+}
+
+.meta .date .day {
+	font-size: 4em;
+}
 
 
 

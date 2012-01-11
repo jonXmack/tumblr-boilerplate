@@ -448,7 +448,6 @@ footer {
 
 .meta .date li {
 	text-align: center;
-	text-shadow: rgba(0,0,0,0.5) 0 0 10px; 
 }
 
 .meta .date .month {
@@ -459,7 +458,6 @@ footer {
 
 .meta .date .day {
 	font-size: 4em;
-	text-shadow: rgba(0,0,0,0.5) 0 0 20px; 
 }
 
 
