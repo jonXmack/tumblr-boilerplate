@@ -48,15 +48,15 @@
 	<link rel="alternate" type="application/rss+xml" href="{RSS}">		
 	
 	<!-- CSS -->
-	<link rel="stylesheet" href="//assets.jonmack.co.uk/generic/css/styles.css">
+	<link rel="stylesheet" href="//assets.jonmack.co.uk/phoblo/css/styles.css">
 	<!-- Optional font-face stylesheet, linked to prevent duplication of styles in web inspector -->	
-	<!-- <link rel="stylesheet" href="//assets.jonmack.co.uk/generic/css/font-face.css" type="text/css" title="font-face"> -->
+	<!-- <link rel="stylesheet" href="//assets.jonmack.co.uk/phoblo/css/font-face.css" type="text/css" title="font-face"> -->
 	
 	<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<script src="//s3.amazonaws.com/nwapi/nwmatcher/nwmatcher-1.2.3-min.js"></script>
 
-		<script type="text/javascript" src="//assets.jonmack.co.uk/generic/js/selectivizr.js"></script>
+		<script type="text/javascript" src="//assets.jonmack.co.uk/phoblo/js/selectivizr.js"></script>
 	<![endif]-->
 
 </head>
@@ -92,25 +92,15 @@
 					</ul>
 				</nav>
 
-				<form id="search" action="/search" method="get">
-					<input type="text" placeholder="Search" name="q" value="{SearchQuery}">
-					<input type="submit" value="{lang:Search}">
-				</form>
-				
 			</header>
 
 			<section id="content" class="cf">
 				
 				{block:Posts}
-					<article class="post cf {TagsAsClasses}">
+					<article class="post cf {PostType} {TagsAsClasses}">
 
-						<div class="content {PostType}">
+						<div class="content">
 						
-							{block:Text}
-								{block:Title}<h3 class="replace">{Title}</h3>{/block:Title}
-								{Body}
-							{/block:Text}
-	
 							{block:Photo}
 								{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
 								
@@ -136,74 +126,7 @@
 								{/block:Caption}
 							{/block:Photo}
 
-							{block:Quote}
-								<blockquote class="words {Length}">&#8220;{Quote}&#8221;</blockquote>
-								{block:Source}
-									<p class="source">&mdash; {Source}</p>
-								{/block:Source}
-							{/block:Quote}
-	
-							{block:Link}
-								<h3 class="replace"><a href="{URL}" {Target}>{Name}</a></h3>
-								{block:Description}
-									<div class="caption">
-										{Description}
-									</div>
-								{/block:Description}
-							{/block:Link}
-	
-							{block:Chat}
-								{block:Title}<h3 class="replace">{Title}</h3>{/block:Title}
-								<ul class="conversation">
-									{block:Lines}
-										<li class="line {Alt}">
-											{block:Label}<span class="person">{Label}</span>{/block:Label}
-											<span class="person-said">{Line}</span>
-										</li>
-									{/block:Lines}
-								</ul>
-							{/block:Chat}
-	
-							{block:Audio}
-								{AudioPlayerBlack}
-								{block:AlbumArt}<img src="{AlbumArtURL}" class="artwork">{/block:AlbumArt}
-								<ul class="id3">
-									{block:Artist}
-										<li class="artist"><strong>Artist: </strong>{Artist}</li>
-									{/block:Artist}
-									{block:Album}
-										<li class="album"><strong>Album: </strong>{Album}</li>
-									{/block:Album}
-									{block:TrackName}
-										<li class="track"><strong>Track: </strong>{TrackName}</li>
-									{/block:TrackName}
-									<li class="plays"><strong>Plays: </strong>{PlayCountWithLabel}</li>
-								</ul>
-								{block:Caption}
-									<div class="caption">{Caption}</div>
-								{/block:Caption}
-							{/block:Audio}
-	
-							{block:Video}
-								{Video-500}
-								<ul class="id3">
-									<li class="plays">{PlayCountWithLabel}</li>
-								</ul>
-								{block:Caption}
-									<div class="caption">{Caption}</div>
-								{/block:Caption}
-							{/block:Video}
-	
-							{block:Answer}
-								<blockquote>
-									{Question}
-								</blockquote>
-								<ul class="asker">
-									<li><img src="{AskerPortraitURL-16}"> {Asker}</li>
-								</ul>
-								{Answer}
-							{/block:Answer}
-						</div> <!-- content {PostType} -->
+						</div> <!-- content -->
 
 						<div class="meta">
 
@@ -211,10 +134,14 @@
 								<ul class="date cf">
 								<!-- http://www.tumblr.com/docs/en/custom_themes#dates -->
 									{block:NewDayDate}
-										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
+										<li class="month">{ShortMonth}</li>
+										<li class="day">{DayOfMonth}</li>
+										<li class="time">{24Hour}:{Minutes} {CapitalAmPm}</li>
 									{/block:NewDayDate}
 									{block:SameDayDate}
-										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
+										<li class="month">{ShortMonth}</li>
+										<li class="day">{DayOfMonth}</li>
+										<li class="time">{24Hour}:{Minutes} {CapitalAmPm}</li>
 									{/block:SameDayDate}
 								</ul>
 							{/block:Date}
@@ -324,10 +251,10 @@
 	<!-- JavaScript -->
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-	<script>window.jQuery || document.write("<script src='//assets.jonmack.co.uk/generic/js/jquery-1.7.0.min.js'>\x3C/script>")</script>
+	<script>window.jQuery || document.write("<script src='//assets.jonmack.co.uk/phoblo/js/jquery-1.7.0.min.js'>\x3C/script>")</script>
 
 	<!-- Aditional JavaScript -->
-	<script src="//assets.jonmack.co.uk/generic/js/global.js"></script> 
+	<script src="//assets.jonmack.co.uk/phoblo/js/global.js"></script> 
 
 	<!--
 	Google Font API WebFont Loader
@@ -340,7 +267,7 @@
 		WebFont.load({
 		  custom: {
 		    families: ['FONT-NAME'], // Font name as used in the stylesheet
-		    urls: ['//assets.jonmack.co.uk/generic/css/font-face.css']
+		    urls: ['//assets.jonmack.co.uk/phoblo/css/font-face.css']
 		  }
 		});
 	</script> 

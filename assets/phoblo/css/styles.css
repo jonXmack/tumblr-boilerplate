@@ -26,6 +26,8 @@ html {
     overflow-y: scroll;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    
+    background: url(//assets.jonmack.co.uk/phoblo/images/bg.png);
 }
 body {
     margin: 0;
@@ -311,8 +313,7 @@ td {
 /* ===== Wrapper ===== */
 
 #wrapper {
-	width: 978px;
-	margin: 0 auto;
+	padding: 25px;
 }
 
 
@@ -355,6 +356,7 @@ header nav a.active {
 
 /* ===== Content ===== */
 
+
 /* ===== Footer ===== */
 
 footer {
@@ -375,6 +377,9 @@ footer {
 
 .post.photo {}
 
+.photo .content img {
+	max-width: 100%;
+}
 
 /* quote */
 
@@ -410,8 +415,119 @@ footer {
 
 .post .meta {}
 
+.meta .date {
+	list-style: none;
+	padding: 0;
+	font-size: 1em;
+	line-height: 1;
+	font-family: Georgia, Times, serif;
+	position: relative;
+	margin: 10px 0 0;
+}
+
+.meta .date:before,
+.meta .date:after {
+	content: "";
+	border-top: 1px solid #000;
+	height: 1px;
+	width: 15%;
+	position: absolute;
+	top: 50%;
+	box-shadow: rgba(0,0,0,0.5) 0 0 15px;
+}
+
+.meta .date:before {
+	left: 50%;
+	margin: 0 0 0 -20%;
+}
+
+.meta .date:after {
+	right: 50%;
+	margin: 0 -20% 0 0;
+}
+
+.meta .date li {
+	text-align: center;
+	text-shadow: rgba(0,0,0,0.5) 0 0 10px; 
+}
+
+.meta .date .month {
+	text-transform: uppercase;
+	font-size: 1.2em;
+	margin: 0 0 -4px;
+}
+
+.meta .date .day {
+	font-size: 4em;
+	text-shadow: rgba(0,0,0,0.5) 0 0 20px; 
+}
 
 
+.meta .tags {
+	list-style: none;
+	padding: 0;
+}
+
+.meta .tags li {
+	float: left;
+	margin: 0 4px 0 0;
+}
+
+.meta .tags li:first-child {
+	margin: 4px 4px 0 0;
+}
+
+.meta .tags li a {
+	display: inline-block;
+	position: relative;
+	font-weight: 700;
+	color: rgba(255,255,255,0.4);
+	padding: 4px 8px;
+	text-decoration: none;
+	border-radius: 12px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 1px rgba(0, 0, 0, 0.25); 
+	   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 1px rgba(0, 0, 0, 0.25); 
+			box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.25), inset 0 -1px 1px rgba(0, 0, 0, 0.25); 
+
+	text-shadow: rgba(0,0,0,0.15) 0 -2px;
+}
+
+.tags li a:before,
+.tags li a:after {
+	content: "";
+	position: absolute;
+	left: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 12px;
+ }
+
+
+.tags li a:before {
+	top: 0;
+	z-index: -10;
+	background: #1a4cde;
+}
+
+.tags li a:after {
+	position: absolute;
+	top: 1px;
+	z-index: -5;
+
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%,rgba(255, 255, 255, 0) 65%,rgba(255, 255, 255, 0) 66%,rgba(255, 255, 255, 0) 80%,rgba(255, 255, 255, 0.5) 100%);
+	   background: -moz-linear-gradient(top, rgba(255, 255, 255, 0.5) 0%,rgba(255, 255, 255, 0) 65%,rgba(255, 255, 255, 0) 66%,rgba(255, 255, 255, 0) 80%,rgba(255, 255, 255, 0.5) 100%);
+			background: linear-gradient(top, rgba(255, 255, 255, 0.5) 0%,rgba(255, 255, 255, 0) 65%,rgba(255, 255, 255, 0) 66%,rgba(255, 255, 255, 0) 80%,rgba(255, 255, 255, 0.5) 100%);
+}
+
+.meta .tags li a:hover {
+	color: rgba(255,255,255,1);
+}
+
+/* 50/50 split gradient
+	#5e6977
+	background: linear-gradient(top, rgba(255,255,255,0.15) 0%,rgba(255,255,255,0.15) 50%,rgba(255,255,255,0) 51%,rgba(255,255,255,0) 100%); 
+*/
 
 
 
