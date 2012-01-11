@@ -472,6 +472,7 @@ footer {
 	text-align: center;
 	background: rgba(228,228,228,1);
 	color: #434343;
+	z-index: 10;
 }
 
 .photoset-wrapper .prev:hover,
@@ -493,9 +494,29 @@ footer {
 	overflow: hidden;
 }
 
-.photo-wrap img {
+.photo-wrap a {
+	position: relative;
+	display: block;
 	float: left;
 	margin: 0 10px 0 0;
+	text-decoration: none;
+}
+
+.photo-wrap a:before {
+	content: "`";
+	font-family: "Pictos";
+	position: absolute;
+	top: -16px;
+	right: 3px;
+	font-size: 3em;
+	color: rgba(255,255,255,0.5);
+}
+
+.photo-wrap a:hover:before {
+	color: rgba(255,255,255,0.75);
+}
+
+.photo-wrap img {
 }
 
 /* quote */

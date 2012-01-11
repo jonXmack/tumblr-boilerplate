@@ -141,9 +141,9 @@
 									<a href="#" class="next">&raquo;</a>
 									
 									<div class="photo-wrap">
-										<div class="wrap cf wrap-{PhotoCount}">
+										<div class="wrap cf">
 											{block:Photos}
-												<img src="{PhotoURL-250}" alt="" />
+												{block:HighRes}<a href="{PhotoURL-HighRes}" target="_blank">{/block:HighRes}<img src="{PhotoURL-250}" alt="{PhotoAlt}"/>{block:HighRes}</a>{/block:HighRes}
 											{/block:Photos}
 										</div>
 									</div>
