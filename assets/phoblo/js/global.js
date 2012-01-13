@@ -58,9 +58,23 @@ $(document).ready(function() {
 	// Removes the font-face stylesheet once the google appended one is in to prevent duplication of styles in inspector
 	$('link[title=font-face]').remove();
 	
+	// FancyBox
+	$(".fancy").fancybox();
+
 	var tagText = $('.tags li a').text();
-	console.log(tagText);
 	
+/*
+	var pageWidth = $('#wrapper').width();
 	
+	$('.meta .wrap').css('width',pageWidth);
+	
+	$('.post').hover(function(){
+		$(this).children('.meta').css('width',pageWidth);
+	},
+	function(){
+		$(this).children('.meta').css('width','34px');
+	});
+*/
+
 
 });

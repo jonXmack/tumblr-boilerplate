@@ -49,8 +49,7 @@
 	
 	<!-- CSS -->
 	<link rel="stylesheet" href="//assets.jonmack.co.uk/phoblo/css/styles.css">
-	<!-- Optional font-face stylesheet, linked to prevent duplication of styles in web inspector -->	
-	<!-- <link rel="stylesheet" href="//assets.jonmack.co.uk/phoblo/css/font-face.css" type="text/css" title="font-face"> -->
+	<link rel="stylesheet" href="//assets.jonmack.co.uk/phoblo/css/font-face.css" type="text/css" title="font-face">
 	
 	<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -102,10 +101,10 @@
 						<div class="content">
 						
 							{block:Photo}
-								{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
+								{block:HighRes}<a class="fancy fancybox.image" href="{PhotoURL-HighRes}" data-fancybox-group="gallery{PostID}" rel="gallery{PostID}" title="{PhotoAlt}">{/block:HighRes}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{block:HighRes}</a>{/block:HighRes}
 								
 								{block:Exif}
-									<ul class="exif cf">
+									<ul class="exif replace cf">
 										{block:Camera}
 											<li><strong>Camera: </strong>{Camera}</li>
 										{/block:Camera}
@@ -128,78 +127,81 @@
 
 						</div> <!-- content -->
 
-						<div class="meta">
+						<div class="meta replace cf">
+							<div class="wrap">
 
-							{block:Date}
-								<ul class="date cf">
-								<!-- http://www.tumblr.com/docs/en/custom_themes#dates -->
-									{block:NewDayDate}
-										<li class="month">{ShortMonth}</li>
-										<li class="day">{DayOfMonth}</li>
-										<li class="time">{24Hour}:{Minutes} {CapitalAmPm}</li>
-									{/block:NewDayDate}
-									{block:SameDayDate}
-										<li class="month">{ShortMonth}</li>
-										<li class="day">{DayOfMonth}</li>
-										<li class="time">{24Hour}:{Minutes} {CapitalAmPm}</li>
-									{/block:SameDayDate}
-								</ul>
-							{/block:Date}
+								{block:Date}
+									<ul class="date cf">
+									<!-- http://www.tumblr.com/docs/en/custom_themes#dates -->
+										{block:NewDayDate}
+											<li class="month">{ShortMonth}</li>
+											<li class="day">{DayOfMonth}</li>
+											<li class="time">{24Hour}:{Minutes} {CapitalAmPm}</li>
+										{/block:NewDayDate}
+										{block:SameDayDate}
+											<li class="month">{ShortMonth}</li>
+											<li class="day">{DayOfMonth}</li>
+											<li class="time">{24Hour}:{Minutes} {CapitalAmPm}</li>
+										{/block:SameDayDate}
+									</ul>
+								{/block:Date}
+								
+								{block:IndexPage}
+									<p class="cf"><a href="{Permalink}" class="permalink">Permalink</a></p>
+
+									<p class="cf">
+										<a id="{PostID}" href="{Permalink}" onclick ="GETReblogLink('{PostID}');" class="permalink-reblog">Reblog</a>
+									</p>
+								{/block:IndexPage}
+								
+								{block:PermalinkPage}
+									<p class="cf">
+										<a id="{PostID}" href="{Permalink}" onclick ="GETReblogLink('{PostID}');" class="permalink-reblog">Reblog</a>
+									</p>
+								{/block:PermalinkPage}
+								
+								{block:NoteCount}
+									<div class="notes-container cf">
+										<p>{NoteCountWithLabel}</p>
+									</div>
+								{/block:NoteCount}
+								<div class="cf"></div>
+								{block:HasTags}
+									<ul class="tags cf">
+										<li>Tagged:</li>
+										{block:Tags}
+											<li><a href="{TagURL}">{Tag}</a></li>
+										{/block:Tags}
+									</ul>
+								{/block:HasTags}
+								<div class="cf"></div>
+								{block:RebloggedFrom}
+									<ul class="reblogged cf">
+										<li class="from">Reblogged from</li>
+										<li>
+											<img src="{ReblogParentPortraitURL-16}" alt="" />	
+											<a href="{ReblogParentURL}">{ReblogParentName}</a>	
+										</li>
+									</ul>
+								{/block:RebloggedFrom}
+	
+								{block:ContentSource}
+									<ul class="source cf">
+										<li>Source:</li>
+										<li>
+											<a href="{SourceURL}">
+												{block:SourceLogo}
+													<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />
+												{/block:SourceLogo}
+												{block:NoSourceLogo}
+													{SourceTitle}
+												{/block:NoSourceLogo}
+											</a>
+										</li>
+									</ul>
+								{/block:ContentSource}
 							
-							{block:IndexPage}
-								<p class="cf"><a href="{Permalink}" class="permalink">Permalink</a></p>
-							{/block:IndexPage}
-							
-							{block:PermalinkPage}
-								<p class="cf">
-									<a id="{PostID}" href="{Permalink}" onclick ="GETReblogLink('{PostID}');" class="permalink-reblog">Reblog</a>
-								</p>
-							{/block:PermalinkPage}
-							
-							{block:RebloggedFrom}
-								<ul class="reblogged cf">
-									<li class="from">Reblogged from</li>
-									<li>
-										<img src="{ReblogParentPortraitURL-16}" alt="" />	
-										<a href="{ReblogParentURL}">{ReblogParentName}</a>	
-									</li>
-								</ul>
-							{/block:RebloggedFrom}
-							
-							{block:NoteCount}
-								<div class="notes-container cf">
-									<p>{NoteCountWithLabel}</p>
-									
-									{block:PostNotes}
-						            	{PostNotes}
-									{/block:PostNotes}
-								</div>
-							{/block:NoteCount}
-							
-							{block:HasTags}
-								<ul class="tags cf">
-									<li>Tagged:</li>
-									{block:Tags}
-										<li><a href="{TagURL}">{Tag}</a></li>
-									{/block:Tags}
-								</ul>
-							{/block:HasTags}
-							
-							{block:ContentSource}
-								<ul class="source cf">
-									<li>Source:</li>
-									<li>
-										<a href="{SourceURL}">
-											{block:SourceLogo}
-												<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />
-											{/block:SourceLogo}
-											{block:NoSourceLogo}
-												{SourceTitle}
-											{/block:NoSourceLogo}
-										</a>
-									</li>
-								</ul>
-							{/block:ContentSource}
+							</div>
 
 						</div> <!-- meta -->
 
@@ -254,24 +256,27 @@
 	<script>window.jQuery || document.write("<script src='//assets.jonmack.co.uk/phoblo/js/jquery-1.7.0.min.js'>\x3C/script>")</script>
 
 	<!-- Aditional JavaScript -->
+	<!-- FancyBox -->
+	<link rel="stylesheet" href="//assets.jonmack.co.uk/_fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+	<script type="text/javascript" src="//assets.jonmack.co.uk/_fancybox/jquery.fancybox.pack.js"></script>
+
 	<script src="//assets.jonmack.co.uk/phoblo/js/global.js"></script> 
 
 	<!--
 	Google Font API WebFont Loader
 	Makes browsers hide the @font-face text until the font file has been loaded, prevents flicker in Firefox 
 	--> 
-<!-- 
-	Uncomment if using custom fonts
+
 	<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script> 
 	<script type="text/javascript"> 
 		WebFont.load({
 		  custom: {
-		    families: ['FONT-NAME'], // Font name as used in the stylesheet
+		    families: ['BebasNeueRegular','Pictos'], // Font name as used in the stylesheet
 		    urls: ['//assets.jonmack.co.uk/phoblo/css/font-face.css']
 		  }
 		});
 	</script> 
--->
+
 	<!-- Analytics -->
 	<script>
 		var _gaq=[['_setAccount','UA-717581-X'],['_trackPageview'],['_trackPageLoadTime']];

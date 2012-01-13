@@ -101,7 +101,7 @@
 			<section id="content" class="cf">
 				
 				{block:Posts}
-					<article class="post cf {TagsAsClasses} {PostType}">
+					<article class="post cf {TagsAsClasses} {PostType}{block:PermalinkPage} expanded single{/block:PermalinkPage}">
 
 						<div class="content {PostType}">
 						
@@ -265,7 +265,7 @@
 							
 							{block:NoteCount}
 								<div class="notes-container cf">
-									<p>{NoteCountWithLabel}</p>
+									<p>{NoteCount}</p>
 									
 									{block:PostNotes}
 						            	{PostNotes}
