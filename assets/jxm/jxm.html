@@ -90,7 +90,7 @@
 <!--
 						<li><a href="/tagged/alphabetical-merch">Alphabetical Merch</a></li>
 -->
-						<li><a href="/tagged/me">Photos of Me</a></li>
+						<li><a href="/tagged/jonxmack">Photos of Me</a></li>
 						<li><a href="/post/6484432075/straight-edge">Why I'm straight edge</a></li>
 						<li><a href="http://xvelox.tumblr.com">My cycling blog</a></li>
 
@@ -112,8 +112,11 @@
 							{/block:Text}
 	
 							{block:Photo}
-								{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}" class="lazy" />{LinkCloseTag}
-								
+							<span class="img-placeholder"></span>
+							<noscript data-mobilesrc="{PhotoURL-500}" data-fullsrc="{PhotoURL-HighRes}" data-alttext="{PhotoAlt}" class="responsivize">
+							   <img src="{PhotoURL-HighRes}">
+							</noscript>
+
 								{block:Exif}
 									<ul class="exif cf">
 										{block:Camera}

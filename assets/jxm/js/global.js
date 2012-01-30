@@ -73,6 +73,46 @@ function GETReblogLink(postId) {
 function scroll(e){var a,d,b=[],c=$(window).scrollTop(),f=$(".post");f.each(function(){b.push(parseInt($(this).offset()["top"],10))});for(d=0;d<b.length;d++){if(e=="next"&&b[d]>c){a=f.get(d);break}if(e=="prev"&&d>0&&b[d]>=c){a=f.get(d-1);break}}if(a){$.scrollTo(a,{duration:750})}return false};
 
 
+// responsiveImageTag - https://github.com/futurechimp/responsive_image_tag/blob/master/lib/generators/responsive_image_tag/templates/responsive-image-tag-jquery.js
+
+var responsiveImageTag = {
+	
+    replaceInitialImages:function() {
+		var platform = "desktop";
+		var responsiveImages = $(".responsivize");
+		var i, 
+			noOfresponsiveImages = responsiveImages.length;
+
+			// Test for available width in current browser window
+			// 767px, anything smaller than an ipad is considered mobile
+		if(screen.width <= 767){ 
+			platform = "mobile";
+		}
+
+		//set initial source element on image
+		for(i = 0; i < noOfresponsiveImages; i = i + 1 ){
+			var noScriptElem = $(responsiveImages[i]);
+			var img = window.document.createElement("img");
+
+			img.alt = noScriptElem.attr("data-alttext");
+
+			if(platform === "mobile"){
+				img.src = noScriptElem.attr("data-mobilesrc");
+			}else{
+				img.src = noScriptElem.attr("data-fullsrc");
+			}
+
+			img.className = "responsive";
+			noScriptElem.prev().append(img);	
+			noScriptElem.hide();
+		}
+    }
+};
+
+$(function() {
+	responsiveImageTag.replaceInitialImages();
+});
+
 $(document).ready(function() {
 // Removes the font-face stylesheet once the google appended one is in to prevent duplication of styles in inspector
 	$('link[title=font-face]').remove();

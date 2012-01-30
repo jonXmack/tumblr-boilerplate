@@ -311,8 +311,7 @@ td {
 /* ===== Wrapper ===== */
 
 #wrapper {
-	width: 978px;
-	margin: 0 auto;
+	padding: 25px;
 }
 
 
@@ -355,6 +354,10 @@ header nav a.active {
 
 /* ===== Content ===== */
 
+#content {
+	margin: 0 0 0 -0.78%;
+}
+
 /* ===== Footer ===== */
 
 footer {
@@ -364,7 +367,18 @@ footer {
 
 /* ===== Classes ===== */
 
-.post {}
+.post {
+	width: 30%;
+	float: left;
+	padding: 15px;
+	background: #eee;
+	border-radius: 3px;
+	margin: 0 0 2% 0.78%;
+}
+
+.post iframe {
+	max-width: 100%;
+}
 
 /* text */
 
@@ -373,12 +387,12 @@ footer {
 
 /* photo */
 
-.post.photo {}
+.post.photo {
+}
 
 .post.photo img {
 	max-width: 100%;
 }
-
 
 /* quote */
 
