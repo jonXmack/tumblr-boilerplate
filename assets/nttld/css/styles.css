@@ -26,12 +26,22 @@ html {
     overflow-y: scroll;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+
+	background: rgb(50,50,50);
+	background-image: -moz-radial-gradient(50% 50%, circle cover, rgb(50,50,50) 25%, rgb(0,0,0) 175%);
+	background-image: -webkit-radial-gradient(50% -50%, circle cover, rgb(50,50,50) 25%, rgb(0,0,0) 175%);
+	background-image: -o-radial-gradient(50% 50%, circle cover, rgb(50,50,50) 25%, rgb(0,0,0) 175%);
+	background-image: -ms-radial-gradient(50% 50%, circle cover, rgb(50,50,50) 25%, rgb(0,0,0) 175%);
+	background-image: radial-gradient(50% 50%, circle cover, rgb(50,50,50) 25%, rgb(0,0,0) 175%);
+	color: #A5A5A5;
+	height: 100%;
 }
 body {
     margin: 0;
 	color: #444;
 	font: 50%/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif; /* base font size 1em (10px)*/
 }
+
 button, input, select, textarea {
     font-family: sans-serif;
     color: #222;
@@ -51,13 +61,11 @@ button, input, select, textarea {
    Links
    ========================================================================== */
 
-a {
-    color: #00e;
-}
-
+a,
 a:active,
 a:visited {
-    color: #06e;
+    color: #a5a5a5;
+	text-decoration: none;
 }
 
 a:focus {
@@ -65,7 +73,7 @@ a:focus {
 }
 
 a:hover {
-	text-decoration: none;
+	color: #fff;
 }
 
 a:hover, a:active {
@@ -90,7 +98,7 @@ dfn {
 }
 
 h1 {
-	font-size: 3em;
+	font-size: 3.6em;
 	margin: 0 0 15px;
 }
 
@@ -323,9 +331,12 @@ header {
 }
 
 #logo {
-	width: 100px;
-	height: 100px;
-	float: left;
+
+}
+
+#logo a {
+	color: #fff;
+	text-decoration: none;
 }
 
 
@@ -416,11 +427,6 @@ footer {
 
 .slider {
 	margin: 0 0 25px;
-	-webkit-background-size: cover !important;
-	-moz-background-size: cover !important;
-	-o-background-size: cover !important;
-	background-size: cover !important;
-	position: relative;
 }
 
 .slider .images {
@@ -428,54 +434,14 @@ footer {
 	height: 649px;
 }
 
-.slider .navigation {
-	
+.caption p:first-of-type {
+	font-size: 3em;
+	color: #fff;
 }
 
-.slider .navigation img {
-	float: left;
-	width: 90px;
+.caption p:last-of-type {
+	margin: 0;
 }
-
-.slider a.fancy {
-	display: block;
-	width: 978px;
-	height: 649px;
-}
-
-.slider a.fancy img {
-	display: block;
-	width: 978px;
-	height: 649px;
-}
-
-.slider .prev,
-.slider .next {
-	display:block;
-	width:30px;
-	height:30px;
-	background:url(//assets.jonmack.co.uk/_nivo/themes/default/arrows.png) no-repeat;
-	text-indent:-9999px;
-	border:0;
-	position: absolute;
-	top: 50%;
-	margin: -15px 0 0;
-	z-index: 1000;
-	opacity: 0.5;
-}
-.slider .next {
-	background-position:-30px 0;
-	right:15px;
-}
-.slider .prev {
-	left:15px;
-}
-
-.slider .next:hover,
-.slider .prev:hover {
-	opacity: 1;
-}
-
 
 
 

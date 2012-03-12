@@ -50,7 +50,8 @@
 	<!-- CSS -->
 	<link rel="stylesheet" href="//assets.jonmack.co.uk/nttld/css/styles.css">
 	<!-- Optional font-face stylesheet, linked to prevent duplication of styles in web inspector -->	
-	<!-- <link rel="stylesheet" href="//assets.jonmack.co.uk/nttld/css/font-face.css" type="text/css" title="font-face"> -->
+	<link rel="stylesheet" href="//assets.jonmack.co.uk/nttld/css/font-face.css" type="text/css" title="font-face">
+	<!--[if IE 9]><link rel="stylesheet" href="//assets.jonmack.co.uk/nttld/css/font-face.css" type="text/css"><![endif]-->
 	
 	<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -63,40 +64,8 @@
 	<body>
 		<div id="wrapper">
 		
-			<header id="header">
-			
-				<h1 id="logo"><a href="/">{Title}</a></h1>
-				{block:Description}
-					<div class="description">{Description}</div>
-				{/block:Description}
-				
-				<nav>
-					<ul>
-					
-						{block:HasPages}
-							{block:Pages}
-								<li><a href="{URL}">{Label}</a></li>
-							{/block:Pages}
-						{/block:HasPages}
-						
-						<li><a href="/archive">{lang:Archive}</a></li>
-						
-						{block:AskEnabled}
-							<li><a href="/ask">{AskLabel}</a></li>
-						{/block:AskEnabled}
-						
-						{block:SubmissionsEnabled}
-							<li><a href="/ask">{SubmitLabel}</a></li>
-						{/block:SubmissionsEnabled}
-
-					</ul>
-				</nav>
-
-				<form id="search" action="/search" method="get">
-					<input type="text" placeholder="Search" name="q" value="{SearchQuery}">
-					<input type="submit" value="{lang:Search}">
-				</form>
-				
+			<header id="header" class="cf">
+				<h1 id="logo" class="h97"><a href="/">{Title}</a></h1>
 			</header>
 
 			<section id="content" class="cf">
@@ -106,35 +75,8 @@
 
 						<div class="content">
 						
-							{block:Text}
-								{block:Title}<h3 class="replace">{Title}</h3>{/block:Title}
-								{Body}
-							{/block:Text}
-	
 							{block:Photo}
-								<!-- Uncomment below code for fancybox -->
-<!--
-								{block:HighRes}<a class="fancy fancybox.image" href="{PhotoURL-HighRes}" data-fancybox-group="gallery{PostID}" rel="gallery{PostID}" title="{PhotoAlt}">{/block:HighRes}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{block:HighRes}</a>{/block:HighRes}
--->
-
-								{LinkOpenTag}<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>{LinkCloseTag}
-								
-								{block:Exif}
-									<ul class="exif cf">
-										{block:Camera}
-											<li><strong>Camera: </strong>{Camera}</li>
-										{/block:Camera}
-										{block:Aperture}
-											<li><strong>Aperture: </strong>{Aperture}</li>
-										{/block:Aperture}
-										{block:Exposure}
-											<li><strong>Exposure: </strong>{Exposure}</li>
-										{/block:Exposure}
-										{block:FocalLength}
-											<li><strong>Focal Length: </strong>{FocalLength}</li>
-										{/block:FocalLength}
-									</ul>
-								{/block:Exif}
+								<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
 								
 								{block:Caption}
 									<div class="caption">{Caption}</div>
@@ -144,164 +86,32 @@
 							{block:Photoset}
 								<div class="slider">
 									<div class="images">
-									{block:Photos}
-										{block:HighRes}<a class="fancy fancybox.image" href="{PhotoURL-HighRes}" data-fancybox-group="gallery{PostID}" rel="gallery{PostID}">{/block:HighRes}<img src="{PhotoURL-HighRes}"/>{block:HighRes}</a>{/block:HighRes}
-									{/block:Photos}
+										{block:Photos}
+											<img src="{PhotoURL-HighRes}" alt="{PhotoAlt}"/>
+										{/block:Photos}
 									</div>
-									<div class="navigation cf">
-									{block:Photos}
-										<img src="{PhotoURL-500}"/>
-									{/block:Photos}
-									</div>
-									<a href="#" class="prev">Prev</a>
-									<a href="#" class="next">Next</a>
 								</div>
 						
 
 								{block:Caption}
-									<div class="caption">{Caption}</div>
+									<div class="caption h77">
+										{Caption}										
+									</div>
 								{/block:Caption}
 
 							{/block:Photoset}
 
-							{block:Quote}
-								<blockquote class="words {Length}">&#8220;{Quote}&#8221;</blockquote>
-								{block:Source}
-									<p class="source">&mdash; {Source}</p>
-								{/block:Source}
-							{/block:Quote}
-	
-							{block:Link}
-								<h3 class="replace"><a href="{URL}" {Target}>{Name}</a></h3>
-								{block:Description}
-									<div class="caption">
-										{Description}
-									</div>
-								{/block:Description}
-							{/block:Link}
-	
-							{block:Chat}
-								{block:Title}<h3 class="replace">{Title}</h3>{/block:Title}
-								<ul class="conversation">
-									{block:Lines}
-										<li class="line {Alt}">
-											{block:Label}<span class="person">{Label}</span>{/block:Label}
-											<span class="person-said">{Line}</span>
-										</li>
-									{/block:Lines}
-								</ul>
-							{/block:Chat}
-	
-							{block:Audio}
-								{AudioPlayerBlack}
-								{block:AlbumArt}<img src="{AlbumArtURL}" class="artwork">{/block:AlbumArt}
-								<ul class="id3">
-									{block:Artist}
-										<li class="artist"><strong>Artist: </strong>{Artist}</li>
-									{/block:Artist}
-									{block:Album}
-										<li class="album"><strong>Album: </strong>{Album}</li>
-									{/block:Album}
-									{block:TrackName}
-										<li class="track"><strong>Track: </strong>{TrackName}</li>
-									{/block:TrackName}
-									<li class="plays"><strong>Plays: </strong>{PlayCountWithLabel}</li>
-								</ul>
-								{block:Caption}
-									<div class="caption">{Caption}</div>
-								{/block:Caption}
-							{/block:Audio}
-	
-							{block:Video}
-								{Video-500}
-								<ul class="id3">
-									<li class="plays">{PlayCountWithLabel}</li>
-								</ul>
-								{block:Caption}
-									<div class="caption">{Caption}</div>
-								{/block:Caption}
-							{/block:Video}
-	
-							{block:Answer}
-								<blockquote>
-									{Question}
-								</blockquote>
-								<ul class="asker">
-									<li><img src="{AskerPortraitURL-16}"> {Asker}</li>
-								</ul>
-								{Answer}
-							{/block:Answer}
 						</div> <!-- content {PostType} -->
 
 						<div class="meta">
 
-							{block:Date}
-								<ul class="date cf">
-								<!-- http://www.tumblr.com/docs/en/custom_themes#dates -->
-									{block:NewDayDate}
-										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
-									{/block:NewDayDate}
-									{block:SameDayDate}
-										<li>{DayOfWeek}, {Month} {DayOfMonth}, {Year}</li>
-									{/block:SameDayDate}
-								</ul>
-							{/block:Date}
+							<p class="h77">
+								-<a href="{PostAuthorURL}">{PostAuthorName}</a>
+								{block:IndexPage} | <a href="{Permalink}" class="permalink">Link &rarr;</a>{/block:IndexPage}
+								{block:PermalinkPage} | <a id="{PostID}" href="{Permalink}" onclick ="GETReblogLink('{PostID}');" class="permalink-reblog">Reblog &rarr;</a>{/block:PermalinkPage}
+							</p>
 							
-							{block:IndexPage}
-								<p class="cf"><a href="{Permalink}" class="permalink">Permalink</a></p>
-							{/block:IndexPage}
 							
-							{block:PermalinkPage}
-								<p class="cf">
-									<a id="{PostID}" href="{Permalink}" onclick ="GETReblogLink('{PostID}');" class="permalink-reblog">Reblog</a>
-								</p>
-							{/block:PermalinkPage}
-							
-							{block:RebloggedFrom}
-								<ul class="reblogged cf">
-									<li class="from">Reblogged from</li>
-									<li>
-										<img src="{ReblogParentPortraitURL-16}" alt="" />	
-										<a href="{ReblogParentURL}">{ReblogParentName}</a>	
-									</li>
-								</ul>
-							{/block:RebloggedFrom}
-							
-							{block:NoteCount}
-								<div class="notes-container cf">
-									<p>{NoteCountWithLabel}</p>
-									
-									{block:PostNotes}
-						            	{PostNotes}
-									{/block:PostNotes}
-								</div>
-							{/block:NoteCount}
-							
-							{block:HasTags}
-								<ul class="tags cf">
-									<li>Tagged:</li>
-									{block:Tags}
-										<li><a href="{TagURL}">{Tag}</a></li>
-									{/block:Tags}
-								</ul>
-							{/block:HasTags}
-							
-							{block:ContentSource}
-								<ul class="source cf">
-									<li>Source:</li>
-									<li>
-										<a href="{SourceURL}">
-											{block:SourceLogo}
-												<img src="{BlackLogoURL}" width="{LogoWidth}" height="{LogoHeight}" alt="{SourceTitle}" />
-											{/block:SourceLogo}
-											{block:NoSourceLogo}
-												{SourceTitle}
-											{/block:NoSourceLogo}
-										</a>
-									</li>
-								</ul>
-							{/block:ContentSource}
-
 						</div> <!-- meta -->
 
 						
@@ -312,43 +122,6 @@
 			
 		</div><!--close wrapper-->
 		
-		<footer class="cf">
-			{block:PermalinkPagination}
-				<ul class="pagination cf">
-					{block:PreviousPost}
-						<li><a href="{PreviousPost}">Previous post</a></li>
-					{/block:PreviousPost}
-						<li class="sep">&nbsp;</li>
-					{block:NextPost}
-						<li><a href="{NextPost}">Next post</a></li>
-					{/block:NextPost}
-				</ul>
-			{/block:PermalinkPagination}
-
-			{block:Pagination}
-			<ul class="pagination cf">
-				{block:PreviousPage}
-					<li><a id="previous" href="{PreviousPage}">Newer</a></li>
-				{/block:PreviousPage}
-
-				{block:JumpPagination length="5"}
-					{block:CurrentPage}
-						<li class="current-page">{PageNumber}</li>
-					{/block:CurrentPage}
-					{block:JumpPage}
-						<li><a class="jump-page" href="{URL}">{PageNumber}</a></li>
-					{/block:JumpPage}
-				{/block:JumpPagination}
-
-				{block:NextPage}
-					<li><a id="next" href="{NextPage}">Older</a></li>
-				{/block:NextPage}
-			</ul>
-			{/block:Pagination}
-		
-		</footer>
-
-
 	<!-- JavaScript -->
 	<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if necessary -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
@@ -360,28 +133,22 @@
 	<link rel="stylesheet" href="//assets.jonmack.co.uk/_fancybox/jquery.fancybox.css" type="text/css" media="screen" />
 	<script type="text/javascript" src="//assets.jonmack.co.uk/_fancybox/jquery.fancybox.pack.js"></script>
 -->
-
-	<!-- Nivo -->
-	<script src="//assets.jonmack.co.uk/_cycle/jquery.cycle.lite.js"></script>
-
+	<script src="//assets.jonmack.co.uk/_cycle/jquery.cycle.lite.js"></script> 
 	<script src="//assets.jonmack.co.uk/nttld/js/global.js"></script> 
 
 	<!--
 	Google Font API WebFont Loader
 	Makes browsers hide the @font-face text until the font file has been loaded, prevents flicker in Firefox 
 	--> 
-<!-- 
-	Uncomment if using custom fonts
 	<script src="//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script> 
 	<script type="text/javascript"> 
 		WebFont.load({
 		  custom: {
-		    families: ['FONT-NAME'], // Font name as used in the stylesheet
+		    families: ['HelveticaNeueLTStd57Condensed','HelveticaNeueLTStd77BdCn','HelveticaNeueLTStd97BlkCn'], // Font name as used in the stylesheet
 		    urls: ['//assets.jonmack.co.uk/nttld/css/font-face.css']
 		  }
 		});
 	</script> 
--->
 	<!-- Analytics -->
 	<script>
 		var _gaq=[['_setAccount','UA-717581-X'],['_trackPageview'],['_trackPageLoadTime']];
